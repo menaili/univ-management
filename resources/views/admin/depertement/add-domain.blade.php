@@ -1,8 +1,8 @@
 @extends('master.master')
 
-@section('title', 'add-faculty')
+@section('title', 'add-domain')
 
-@section('title-page', 'add faculty')
+@section('title-page', 'add domain')
 
 
 @section('content')
@@ -15,17 +15,24 @@
                 <div class="card">
                     <div class="card-body checkout-form">
                         <h6 class="mb-3">Enter your informations</h6>
-                        @if (Session::has('faculty_added'))
+                        @if (Session::has('domain_added'))
                             <div class="alert alert-success">
-                                {{Session::get('faculty_added')}}
+                                {{Session::get('domain_added')}}
                             </div>
 
                         @endif
-                        <form  action="{{ route('faculty.sub')}}" method="POST">
+                        <form  action="{{ route('domain.sub')}}" method="POST">
                             @csrf
+                            <div class="form-group">
+                                <select class="form-select mb-3" id="faculty" name="faculty" aria-label="faculty">
+                                    @foreach($faculties as $key => $faculty)
+                                        <option value="{{$faculty->faculty_id}}" selected>{{$faculty->faculty_code }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div>
                                 <div class="form-group">
-                                    <input class="form-control mb-3" type="text" id="faculty_name" name="faculty_name" placeholder="Faculty name">
+                                    <input class="form-control mb-3" type="text" id="domain_name" name="domain_name" placeholder="Domain name">
                                 </div>
 
                                 <button class="btn btn-danger mt-3 w-100" id="send-request-btn" style="background:rgb(7, 207, 0); border-color:rgb(7, 207, 0) ;">Send Request</button>

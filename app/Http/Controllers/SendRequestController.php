@@ -56,6 +56,7 @@ class SendRequestController extends Controller
     public function updateById($request){
 
 
+
         date_default_timezone_set('Africa/Algiers');
         DB::table('requests')->where('requests_id',$request->id)->update([
             'requests_student_first_name' => $request->firstnameedit,
@@ -65,8 +66,8 @@ class SendRequestController extends Controller
             'diploma_date' => $request->dateOfDiplomaedit,
 
 
-//            'faculty_id' => $request->faculty,
-//            'level_id' => $request->level,
+             'faculty_id' => $request->faculty,
+             'level_id' => $request->level,
 
 
             'request_sp' => $request->specialityedit,

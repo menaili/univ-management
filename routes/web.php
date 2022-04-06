@@ -56,11 +56,15 @@ Route::get('/Login', [LoginController::class, 'index'])->name('login.index');
 
 Route::post('/Login', [LoginController::class, 'login_submit'])->name('login.submit');
 
-Route::get('/Add-faculty', [DepartementController::class, 'index'])->name('send-request.index');
+Route::get('/Add-faculty', [DepartementController::class, 'index'])->name('Add-faculty.index');
 
 Route::post('/Add-faculty-sub', [DepartementController::class, 'addFaculty'])->name('faculty.sub');
 
+Route::get('/Add-domain', [DepartementController::class, 'domain'])->name('Add-domain.index');
 
+Route::post('/Add-domain-sub', [DepartementController::class, 'addDomain'])->name('domain.sub');
+
+Route::get('/Add-domain', [DepartementController::class, 'getFacultyOfDomain'])->name('get.faculty.domain');
 
 
 
