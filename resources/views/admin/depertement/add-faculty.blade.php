@@ -1,8 +1,8 @@
 @extends('master.master')
 
-@section('title', 'Edit-request')
+@section('title', 'add-faculty')
 
-
+@section('title-page', 'add faculty')
 
 
 @section('content')
@@ -14,82 +14,21 @@
       <div class="checkout-wrapper-area">
         <div class="card">
           <div class="card-body checkout-form">
-            <h6 class="mb-3">edit your informations</h6>
-            @if (Session::has('request_updated'))
+            <h6 class="mb-3">Enter your informations</h6>
+            @if (Session::has('faculty_added'))
             <div class="alert alert-success">
-              {{Session::get('request_updated')}}
+              {{Session::get('faculty_added')}}
             </div>
 
             @endif
-
-            <form  action="{{ route('update.requests')}}">
+            <form  action="{{ route('faculty.sub')}}" method="POST">
               @csrf
             <div>
               <div class="form-group">
-                <input class="form-control mb-3" type="text" id="firstnameedit" name="firstname" value="{{ $requests->requests_student_first_name }}">
-              </div>
-              <div class="form-group">
-                <input class="form-control mb-3" type="text" id="lastnameedit" name="lastname" value="{{ $requests->requests_student_second_name }}">
-              </div>
-              Your Birthday:
-              <div class="form-group">
-                <input class="form-control mb-3" type="date" id="dateOfBirthedit" name="dateOfBirth" value="{{ $requests->requests_student_birthday }}">
+                <input class="form-control mb-3" type="text" id="faculty_name" name="faculty_name" placeholder="Faculty name">
               </div>
 
-              <div class="form-group">
-                <input class="form-control mb-3" type="text" id="diplomanumberedit" name="diplomanumber" value="{{ $requests->diploma_N }}">
-              </div>
-              date of diploma:
-              <div class="form-group">
-                <input class="form-control mb-3" type="date" id="dateOfDiplomaedit" name="dateOfDiploma" value="{{ $requests->diploma_date }}">
-              </div>
-
-              <div class="form-group">
-                <select class="form-select mb-3" id="faculty" name="facultyedit" aria-label="faculty">
-                  <option value="1" selected>Your Faculty</option>
-
-
-                </select>
-              </div>
-              <div class="form-group">
-                <input class="form-control mb-3" type="text" id="speciality" name="specialityedit" value="{{ $requests->request_sp }}">
-              </div>
-              <!--
-              <div class="form-group">
-                <select class="form-select mb-3" id="speciality" name="speciality" aria-label="speciality">
-                  <option value="1" selected>Your Speciality</option>
-                  <option value="2">Dhaka</option>
-                  <option value="3">Barishal</option>
-                  <option value="3">Khulna</option>
-                </select>
-              </div>
-              -->
-              <div class="form-group">
-                <select class="form-select mb-3" id="level" name="leveledit" aria-label="levem">
-                  <option value="1" selected>Your level</option>
-                  {{-- @foreach ($level as $key => $level )
-
-                  <option value={{$level->level_id}}>{{$level->level_code}}</option>';
-
-                  @endforeach --}}
-
-                </select>
-              </div>
-
-              <div class="form-group">
-                <textarea class="form-control mb-3" id="note" name="noteedit" cols="30" rows="10">{{ $requests->request_note }}</textarea>
-              </div>
-              <!--
-              <div class="form-check mb-2">
-                <input class="form-check-input" type="checkbox" name="exampleRadio" id="darkRadio1" checked>
-                <label class="form-check-label" for="darkRadio1">Regular Courier $0.49</label>
-              </div>
-              <div class="form-check mb-2">
-                <input class="form-check-input" type="checkbox" name="exampleRadio" id="darkRadio2">
-                <label class="form-check-label" for="darkRadio2">Free Shipping $0</label>
-              </div>
-            -->
-              <button class="btn btn-danger mt-3 w-100" id="send-request-btn" style="background:rgb(7, 207, 0); border-color:rgb(7, 207, 0) ;">Save Request</button>
+              <button class="btn btn-danger mt-3 w-100" id="send-request-btn" style="background:rgb(7, 207, 0); border-color:rgb(7, 207, 0) ;">Send Request</button>
             </div>
             </form>
           </div>

@@ -68,7 +68,7 @@ class RequestController extends Controller
             DB::table('requests_status')->insert([
                 'requests_id' => $id,
                 'requests_status_date' => Carbon::now()->toDateTimeString(),
-                'requests_status_code' => 'Demandé',
+                'requests_status_code' => 'Consulté',
 
             ]);
             return back()->with('status_updated', 'status updated successfully!');

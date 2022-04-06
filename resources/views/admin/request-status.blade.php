@@ -88,7 +88,7 @@
         <td id="btn-next">
 
 
-            <div class="direction-rtl"><a class="btn m-1 btn-outline-primary" id="btn-step" href="/eCommerce/public/Status-update/{{$request->requests_id}}">Next step</a></div>
+            <div class="direction-rtl"><a class="btn m-1 btn-outline-primary" id="btn-step" href="/univ-certaficate-management/public/Status-update/{{$request->requests_id}}">Next step</a></div>
 
         </td>
         </tr>

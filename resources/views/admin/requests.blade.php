@@ -82,9 +82,9 @@
                      {{$request->request_date}}
                     </td>
                       <td><h5>
-                      <a class="remove-product" href="/eCommerce/public/Requests-edit/{{$request->requests_id}}" id="btn-edit"  ><i class="fa fa-edit"></i></a>
+                      <a class="remove-product" href="/univ-certaficate-management/public/Requests-edit/{{$request->requests_id}}" id="btn-edit"  ><i class="fa fa-edit"></i></a>
                       {{-- data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal" --}}
-                      <a class="remove-product" href="/eCommerce/public/Requests-delete/{{$request->requests_id}}" id="btn-delete"><i class="fa fa-close"></i></a>
+                      <a class="remove-product" href="/univ-certaficate-management/public/Requests-delete/{{$request->requests_id}}" id="btn-delete"><i class="fa fa-close"></i></a>
                     </h5>
                       </td>
                     </tr>

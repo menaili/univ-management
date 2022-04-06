@@ -52,6 +52,7 @@ class SendRequestController extends Controller
 
     }
 
+
     public function updateById($request){
 
 
@@ -64,8 +65,8 @@ class SendRequestController extends Controller
             'diploma_date' => $request->dateOfDiplomaedit,
 
 
-            'faculty_id' => $request->faculty,
-            'level_id' => $request->level,
+//            'faculty_id' => $request->faculty,
+//            'level_id' => $request->level,
 
 
             'request_sp' => $request->specialityedit,
