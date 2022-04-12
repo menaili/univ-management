@@ -8,13 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class DepartementController extends Controller
 {
-    public function getFacultyOfDomain(){
-        $faculties = DB::table('faculty')->get();
-
-        return View('admin.depertement.add-domain')->with(compact('faculties'));
-
-    }
-
 
 
     public function index($name = null){
@@ -35,6 +28,18 @@ class DepartementController extends Controller
     }
 
 
+
+
+
+
+
+
+
+
+
+
+//-----------------------DOMAIN----------------------------
+
     public function domain($name = null){
         return view('admin.depertement.add-domain');
     }
@@ -54,5 +59,53 @@ class DepartementController extends Controller
     }
 
 
+
+    public function getFacultyOfDomain(){
+        $faculties = DB::table('faculty')->get();
+
+        return View('admin.depertement.add-domain')->with(compact('faculties'));
+
+    }
+
+
+
+
+
+
+
+
+//------------------------------DEVISION-------------------------------------------
+
+    public function devision($name = null){
+        return view('admin.depertement.add-devision');
+    }
+
+    public function addDevision(Request $request){
+//        $request -> all();
+//        DB::table('requests')->insert($request -> all());
+        date_default_timezone_set('Africa/Algiers');
+        DB::table('division')->insert([
+            'domain_id' => $request->domain,
+            'division_code' => $request->devision_name,
+            'division_creation_date' => Carbon::now()->toDateTimeString(),
+
+        ]);
+        return back()->with('devision_added', 'devision has been added successfully!');
+    }
+
+
+    public function getFacultyOfDevision(){
+        $faculties = DB::table('faculty')->get();
+        return View('admin.depertement.add-devision')->with(compact('faculties'));
+
+    }
+
+    public function getDomainOfDevision($id){
+
+//      echo json_encode(DB::table('domain')->where('domain.faculty_id',$id)->get());
+//        dd($id,DB::table('domain')->where('domain.faculty_id',$id)->toSql(),DB::table('domain')->where('domain.faculty_id',$id)->get());
+        return DB::table('domain')->where('domain.faculty_id',$id)->get();
+
+    }
 
 }

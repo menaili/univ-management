@@ -56,9 +56,13 @@ Route::get('/Login', [LoginController::class, 'index'])->name('login.index');
 
 Route::post('/Login', [LoginController::class, 'login_submit'])->name('login.submit');
 
+//------------FACULTY---------------------------------------------------------------------------------------------
+
 Route::get('/Add-faculty', [DepartementController::class, 'index'])->name('Add-faculty.index');
 
 Route::post('/Add-faculty-sub', [DepartementController::class, 'addFaculty'])->name('faculty.sub');
+
+//------------DOMAIN---------------------------------------------------------------------------------------------
 
 Route::get('/Add-domain', [DepartementController::class, 'domain'])->name('Add-domain.index');
 
@@ -66,7 +70,15 @@ Route::post('/Add-domain-sub', [DepartementController::class, 'addDomain'])->nam
 
 Route::get('/Add-domain', [DepartementController::class, 'getFacultyOfDomain'])->name('get.faculty.domain');
 
+//------------DEVISION---------------------------------------------------------------------------------------------
 
+//Route::get('/Add-devision', [DepartementController::class, 'devision'])->name('Add-devision.index');
+
+Route::post('/Add-devision-sub', [DepartementController::class, 'addDevision'])->name('devision.sub');
+
+Route::get('/Add-devision', [DepartementController::class, 'getFacultyOfDevision'])->name('get.faculty.devision');
+
+Route::get('/getDomainOfDevision/{id}', [DepartementController::class, 'getDomainOfDevision'])->name('get.domain.devision');
 
 
 

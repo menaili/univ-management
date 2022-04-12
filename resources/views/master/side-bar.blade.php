@@ -71,8 +71,8 @@
                               <path d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0zM2 1.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"/>
                           </svg>Department management</a>
                       <ul>
-                          <li><a href="page-shop-grid.html">Faculty</a></li>
-                          <li><a href="page-shop-list.html">Domain</a></li>
+                          <li><a href="/univ-certaficate-management/public/Add-faculty">Faculty</a></li>
+                          <li><a href="/univ-certaficate-management/public/Add-domain">Domain</a></li>
                           <li><a href="page-shop-details.html">Division</a></li>
                           <li><a href="page-cart.html">Speciality</a></li>
                       </ul>
