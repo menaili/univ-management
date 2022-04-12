@@ -80,7 +80,15 @@ Route::get('/Add-devision', [DepartementController::class, 'getFacultyOfDevision
 
 Route::get('/getDomainOfDevision/{id}', [DepartementController::class, 'getDomainOfDevision'])->name('get.domain.devision');
 
+//------------SPECIALITY---------------------------------------------------------------------------------------------
 
+Route::post('/Add-speciality-sub', [DepartementController::class, 'addSpeciality'])->name('speciality.sub');
+
+Route::get('/Add-speciality', [DepartementController::class, 'getFacultyOfSpeciality'])->name('get.faculty.speciality');
+
+Route::get('/getDomainOfSpeciality/{id}', [DepartementController::class, 'getDomainOfSpeciality'])->name('get.domain.Speciality');
+
+Route::get('/getDevisionOfSpeciality/{id}', [DepartementController::class, 'getDevisionOfSpeciality'])->name('get.devision.Speciality');
 
 
 

@@ -73,8 +73,8 @@
                       <ul>
                           <li><a href="/univ-certaficate-management/public/Add-faculty">Faculty</a></li>
                           <li><a href="/univ-certaficate-management/public/Add-domain">Domain</a></li>
-                          <li><a href="page-shop-details.html">Division</a></li>
-                          <li><a href="page-cart.html">Speciality</a></li>
+                          <li><a href="/univ-certaficate-management/public/Add-devision">Division</a></li>
+                          <li><a href="/univ-certaficate-management/public/Add-speciality">Speciality</a></li>
                       </ul>
                   </li>
 

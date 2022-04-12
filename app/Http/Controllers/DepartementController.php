@@ -108,4 +108,69 @@ class DepartementController extends Controller
 
     }
 
+
+
+
+
+
+
+
+
+
+
+//------------------------------SPECIALITY-------------------------------------------
+
+    public function speciality($name = null){
+        return view('admin.depertement.add-speciality');
+    }
+
+    public function addSpeciality(Request $request){
+//        $request -> all();
+//        DB::table('requests')->insert($request -> all());
+        date_default_timezone_set('Africa/Algiers');
+        DB::table('speciality')->insert([
+            'division_id' => $request->devision,
+            'speciality_code' => $request->speciality_name,
+            'speciality_creation_date' => Carbon::now()->toDateTimeString(),
+
+        ]);
+        return back()->with('speciality_added', 'speciality has been added successfully!');
+    }
+
+    public function getFacultyOfSpeciality(){
+        $faculties = DB::table('faculty')->get();
+        return View('admin.depertement.add-speciality')->with(compact('faculties'));
+
+    }
+
+
+    public function getDomainOfSpeciality($id){
+
+//      echo json_encode(DB::table('domain')->where('domain.faculty_id',$id)->get());
+//        dd($id,DB::table('domain')->where('domain.faculty_id',$id)->toSql(),DB::table('domain')->where('domain.faculty_id',$id)->get());
+        return DB::table('domain')->where('domain.faculty_id',$id)->get();
+
+    }
+
+    public function getDevisionOfSpeciality($id){
+
+//      echo json_encode(DB::table('domain')->where('domain.faculty_id',$id)->get());
+//        dd($id,DB::table('domain')->where('domain.faculty_id',$id)->toSql(),DB::table('domain')->where('domain.faculty_id',$id)->get());
+        return DB::table('division')->where('division.domain_id',$id)->get();
+
+    }
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
