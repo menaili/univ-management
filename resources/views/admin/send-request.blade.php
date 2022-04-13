@@ -54,9 +54,7 @@
               </div>
 
 
-                <div class="form-group">
-                <input class="form-control mb-3" type="text" id="speciality" name="speciality" placeholder="Your speciality">
-              </div>
+
               <!--
               <div class="form-group">
                 <select class="form-select mb-3" id="speciality" name="speciality" aria-label="speciality">
@@ -67,16 +65,7 @@
                 </select>
               </div>
               -->
-              <div class="form-group">
-                <select class="form-select mb-3" id="level" name="level" aria-label="levem">
 
-                 @foreach ($levels as $key => $level )
-
-                  <option value={{$level->level_id}}>{{$level->level_code}}</option>';
-
-                  @endforeach
-                </select>
-              </div>
              <!--
               <div class="form-group">
                 <input class="form-control mb-3" type="text" id="Bdiplome" placeholder="Bachelors Degree">

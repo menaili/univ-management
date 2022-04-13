@@ -32,17 +32,13 @@ Route::view('contact-me','contact',[
     'page_des'=> 'hello evry one am haroun errachide'
 ])->name("contact");
 
-
+//-----------------------------Veterinary------------------------------------------------------------
 
 Route::get('/Send-request', [SendRequestController::class, 'index'])->name('send-request.index');
 
 Route::post('/Send-request-sub', [SendRequestController::class, 'addRequest'])->name('request.sub');
 
 Route::get('/Send-request', [SendRequestController::class, 'getLevelFaculty'])->name('get.faculty');
-
-Route::get('/Requests', [RequestController::class, 'getAllRequests'])->name('get.requests');
-
-Route::get('/Requests-status', [RequestController::class, 'getAllRequestsStatus'])->name('get.status');
 
 Route::get('/Status-update/{id}', [RequestController::class, 'changeStatus'])->name('update.status');
 
@@ -51,6 +47,28 @@ Route::get('/Requests-edit/{id}', [SendRequestController::class, 'getById'])->na
 Route::get('/Requests-update', [SendRequestController::class, 'updateById'])->name('update.requests');
 
 Route::get('/Requests-delete/{id}', [RequestController::class, 'deleteById'])->name('delete.requests');
+
+//-----------------------------Licence------------------------------------------------------------
+
+Route::get('/Send-request-licence', [SendRequestController::class, 'indexLicence'])->name('send-request.indexLicence');
+
+Route::post('/Send-request-sub-licence', [SendRequestController::class, 'addRequestLicence'])->name('request.sub.licence');
+
+Route::get('/Send-request-licence', [SendRequestController::class, 'getlicenceFaculty'])->name('get.faculty.licence');
+
+Route::get('/Requests-edit/{id}', [SendRequestController::class, 'getByIdLicence'])->name('edit.requests.licence');
+
+Route::get('/Requests-update-licence', [SendRequestController::class, 'updateByIdLicence'])->name('update.requests.licence');
+
+Route::get('/Requests-delete-licence/{id}', [RequestController::class, 'deleteByIdLicence'])->name('delete.requests.licence');
+
+//-----------------------------Master------------------------------------------------------------
+
+Route::get('/Requests', [RequestController::class, 'getAllRequests'])->name('get.requests');
+
+Route::get('/Requests-status', [RequestController::class, 'getAllRequestsStatus'])->name('get.status');
+
+
 
 Route::get('/Login', [LoginController::class, 'index'])->name('login.index');
 

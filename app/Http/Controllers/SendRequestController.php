@@ -24,18 +24,16 @@ class SendRequestController extends Controller
 //        $request -> all();
 //        DB::table('requests')->insert($request -> all());
         date_default_timezone_set('Africa/Algiers');
-        DB::table('requests')->insert([
+        DB::table('request_veterinary')->insert([
 
-            'requests_student_first_name' => $request->firstname,
-            'requests_student_second_name' => $request->lastname,
-            'requests_student_birthday' => $request->dateOfBirth,
-            'diploma_N' => $request->diplomanumber,
-            'diploma_date' => $request->dateOfDiploma,
+            'veterinary_student_first_name' => $request->firstname,
+            'veterinary_student_last_name' => $request->lastname,
+            'veterinary_student_birthday' => $request->dateOfBirth,
+            'veterinary_diploma_number' => $request->diplomanumber,
+            'veterinary_diploma_date' => $request->dateOfDiploma,
             'faculty_id' => $request->faculty,
-            'level_id' => $request->level,
-            'request_sp' => $request->speciality,
-            'request_note' => $request->note,
-            'request_date' => Carbon::now()->toDateTimeString(),
+            'veterinary_note' => $request->note,
+            'veterinary_status_date' => Carbon::now()->toDateTimeString(),
 
 
         ]);
@@ -46,9 +44,8 @@ class SendRequestController extends Controller
 
     public function getById($id){
 
-        $requests = DB::table('requests')->where('requests_id',$id)->first();
+        $requests = DB::table('request_veterinary')->where('request_veterinary_id',$id)->first();
         return view('admin.edit-request',compact('requests'));
-
 
     }
 
@@ -59,20 +56,14 @@ class SendRequestController extends Controller
 
         date_default_timezone_set('Africa/Algiers');
         DB::table('requests')->where('requests_id',$request->id)->update([
-            'requests_student_first_name' => $request->firstnameedit,
-            'requests_student_second_name' => $request->lastnameedit,
-            'requests_student_birthday' => $request->dateOfBirthedit,
-            'diploma_N' => $request->diplomanumberedit,
-            'diploma_date' => $request->dateOfDiplomaedit,
-
-
-             'faculty_id' => $request->faculty,
-             'level_id' => $request->level,
-
-
-            'request_sp' => $request->specialityedit,
-            'request_note' => $request->noteedit,
-            'request_date' => Carbon::now()->toDateTimeString(),
+            'veterinary_student_first_name' => $request->firstname,
+            'veterinary_student_last_name' => $request->lastname,
+            'veterinary_student_birthday' => $request->dateOfBirth,
+            'veterinary_diploma_number' => $request->diplomanumber,
+            'veterinary_diploma_date' => $request->dateOfDiploma,
+            'faculty_id' => $request->faculty,
+            'veterinary_note' => $request->note,
+            'veterinary_status_date' => Carbon::now()->toDateTimeString(),
             ]);
         return back()->with('request_updated', 'request updated successfully!');
 
@@ -82,13 +73,81 @@ class SendRequestController extends Controller
 
     public function getLevelFaculty(){
         $faculties = DB::table('faculty')->get();
-        $levels = DB::table('level')->get();
-        return View('admin.send-request')->with(compact('faculties','levels'));
+
+        return View('admin.send-request')->with(compact('faculties'));
 
     }
 
 
 
 
+//    ------------------------------------Licence---------------------------------------------------
+
+    public function indexLicence($name = null){
+        return view('admin.send-request-licence');
+    }
+
+    // public function getAlllevel(){
+    //     $level = DB::table('level')->get();
+    //     return view('pages.send-request',compact('level'));
+    // }
+
+    public function addRequestLicence(Request $request){
+//        $request -> all();
+//        DB::table('requests')->insert($request -> all());
+        date_default_timezone_set('Africa/Algiers');
+        DB::table('request_veterinary')->insert([
+
+            'veterinary_student_first_name' => $request->firstname,
+            'veterinary_student_last_name' => $request->lastname,
+            'veterinary_student_birthday' => $request->dateOfBirth,
+            'veterinary_diploma_number' => $request->diplomanumber,
+            'veterinary_diploma_date' => $request->dateOfDiploma,
+            'faculty_id' => $request->faculty,
+            'veterinary_note' => $request->note,
+            'veterinary_status_date' => Carbon::now()->toDateTimeString(),
+
+
+        ]);
+        return back()->with('request_sent', 'request sent successfully!');
+    }
+
+
+
+    public function getByIdLicence($id){
+
+        $requests = DB::table('request_bachlor')->where('request_bachlor_id',$id)->first();
+        return view('admin.edit-request',compact('requests'));
+
+    }
+
+
+    public function updateByIdLicence($request){
+
+
+
+        date_default_timezone_set('Africa/Algiers');
+        DB::table('request_bachlor')->where('request_bachlor_id',$request->id)->update([
+            'bachlor_student_first_name' => $request->firstname,
+            'bachlor_student_last_name' => $request->lastname,
+            'bachlor_student_birthday' => $request->dateOfBirth,
+            'bachlor_diploma_number' => $request->diplomanumber,
+            'bachlor_diploma_date' => $request->dateOfDiploma,
+            'faculty_id' => $request->faculty,
+            'bachlor_note' => $request->note,
+            'bachlor_status_date' => Carbon::now()->toDateTimeString(),
+        ]);
+        return back()->with('request_updated', 'request updated successfully!');
+
+
+    }
+
+
+    public function getlicenceFaculty(){
+        $faculties = DB::table('faculty')->get();
+
+        return View('admin.send-request-licence')->with(compact('faculties'));
+
+    }
 
 }
