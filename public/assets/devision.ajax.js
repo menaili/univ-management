@@ -5,7 +5,6 @@
             let id=$(this).val();
             $('#domain').empty();
             $('#domain').append('<option value="0" disabled selected>Domain</option>')
-            alert(id);
 
             $.ajax({
                 type:'GET',
@@ -41,7 +40,6 @@
             let ids=$(this).val();
             $('#devision').empty();
             $('#devision').append('<option value="0" disabled selected>Devision</option>')
-            alert(ids);
             $.ajax({
                 type:'GET',
                 url: "http://localhost/univ-certaficate-management/public/getDevisionOfSpeciality/"+ ids,

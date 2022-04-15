@@ -47,7 +47,7 @@
                                 Your faculty:
                                 <div class="form-group">
                                     <select class="form-select mb-3" id="faculty" name="faculty" aria-label="faculty">
-                                        <option value="0" selected>faculty</option>
+                                        <option value="0" selected>Faculty</option>
                                     @foreach($faculties as $key => $faculty)
                                             <option value="{{$faculty->faculty_id}}" >{{$faculty->faculty_code }}</option>
                                         @endforeach
@@ -55,20 +55,20 @@
                                 </div>
                                 Your domain:
                                 <div class="form-group">
-                                    <select class="form-select mb-3" id="domain" name="domain" aria-label="domain">
-                                            <option value="0" selected>domain</option>
+                                    <select class="form-select mb-3 domain_bb" id="domain" name="domain" aria-label="domain">
+                                            <option value="0" selected>Domain</option>
                                     </select>
                                 </div>
                                 Your devision:
                                 <div class="form-group">
-                                    <select class="form-select mb-3" id="devision" name="devision" aria-label="devision">
-                                            <option value="0" selected>devision</option>
+                                    <select class="form-select mb-3 devision_bb" id="devision" name="devision" aria-label="devision">
+                                            <option value="0" selected>Devision</option>
                                     </select>
                                 </div>
                                 Your speciality:
                                 <div class="form-group">
-                                    <select class="form-select mb-3" id="speciality" name="speciality" aria-label="speciality">
-                                            <option value="0" selected>speciality</option>
+                                    <select class="form-select mb-3 speciality_bb" id="speciality" name="speciality" aria-label="speciality">
+                                            <option value="0" selected>Speciality</option>
                                     </select>
                                 </div>
 
@@ -169,7 +169,11 @@
     <script src="{{ asset('assets/js/ion.rangeSlider.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/active.js') }}"></script>
+    <script src="{{ asset('assets/send-bachlor.ajax.js') }}"></script>
+
     <!-- PWA -->
     <script src="{{ asset('assets/js/pwa.js') }} "></script>
+    <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
+
 
 @endsection

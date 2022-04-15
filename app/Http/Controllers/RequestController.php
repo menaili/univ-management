@@ -71,9 +71,24 @@ class RequestController extends Controller
                 'requests_status_code' => 'Consulté',
 
             ]);
+
             return back()->with('status_updated', 'status updated successfully!');
-        }else{
-            return back()->with('status_not_updated', 'only admin can change it!');
+        }
+        if ($req->request_status == 'Consulté'){
+
+            DB::table('requests')->where('requests_id',$id)->update([
+                'request_status' => 'doyen',
+            ]);
+
+            date_default_timezone_set('Africa/Algiers');
+            DB::table('requests_status')->insert([
+                'requests_id' => $id,
+                'requests_status_date' => Carbon::now()->toDateTimeString(),
+                'requests_status_code' => 'doyen',
+
+            ]);
+
+            return back()->with('status_updated', 'status updated successfully!');
         }
 
 

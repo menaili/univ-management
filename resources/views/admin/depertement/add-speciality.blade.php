@@ -21,7 +21,7 @@
                             </div>
 
                         @endif
-                        <form  action="{{ route('devision.sub')}}" method="POST">
+                        <form  action="{{ route('speciality.sub')}}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <select class="form-select mb-3 faculty" data-dependent="domain" id="faculty" name="faculty" aria-label="faculty">

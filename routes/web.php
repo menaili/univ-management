@@ -62,6 +62,14 @@ Route::get('/Requests-update-licence', [SendRequestController::class, 'updateByI
 
 Route::get('/Requests-delete-licence/{id}', [RequestController::class, 'deleteByIdLicence'])->name('delete.requests.licence');
 
+Route::get('/getDomainOfBachlor/{id}', [SendRequestController::class, 'getDomainOfBachlor'])->name('get.domain.bachlor');
+
+Route::get('/getDevisionOfBachlor/{id}', [SendRequestController::class, 'getDevisionOfBachlor'])->name('get.devision.bachlor');
+
+Route::get('/getSpecialityOfBachlor/{id}', [SendRequestController::class, 'getSpecialityOfBachlor'])->name('get.speciality.bachlor');
+
+Route::get('/Request-licence', [\App\Http\Controllers\RequestLevelController::class, 'getAllBachlorRequests'])->name('get.request.bachlor');
+
 //-----------------------------Master------------------------------------------------------------
 
 Route::get('/Requests', [RequestController::class, 'getAllRequests'])->name('get.requests');

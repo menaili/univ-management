@@ -96,16 +96,18 @@ class SendRequestController extends Controller
 //        $request -> all();
 //        DB::table('requests')->insert($request -> all());
         date_default_timezone_set('Africa/Algiers');
-        DB::table('request_veterinary')->insert([
+        DB::table('request_bachlor')->insert([
 
-            'veterinary_student_first_name' => $request->firstname,
-            'veterinary_student_last_name' => $request->lastname,
-            'veterinary_student_birthday' => $request->dateOfBirth,
-            'veterinary_diploma_number' => $request->diplomanumber,
-            'veterinary_diploma_date' => $request->dateOfDiploma,
+            'bachlor_student_first_name' => $request->firstname,
+            'bachlor_student_last_name' => $request->lastname,
+            'bachlor_student_birthday' => $request->dateOfBirth,
+            'bachlor_diploma_number' => $request->diplomanumber,
+            'bachlor_diploma_date' => $request->dateOfDiploma,
             'faculty_id' => $request->faculty,
-            'veterinary_note' => $request->note,
-            'veterinary_status_date' => Carbon::now()->toDateTimeString(),
+            'bachlor_domain' => $request->domain,
+            'bachlor_division' => $request->devision,
+            'bachlor_speciality' => $request->speciality,
+            'bachlor_status_date' => Carbon::now()->toDateTimeString(),
 
 
         ]);
@@ -134,7 +136,9 @@ class SendRequestController extends Controller
             'bachlor_diploma_number' => $request->diplomanumber,
             'bachlor_diploma_date' => $request->dateOfDiploma,
             'faculty_id' => $request->faculty,
-            'bachlor_note' => $request->note,
+            'bachlor_domain' => $request->domain,
+            'bachlor_division' => $request->devision,
+            'bachlor_speciality' => $request->speciality,
             'bachlor_status_date' => Carbon::now()->toDateTimeString(),
         ]);
         return back()->with('request_updated', 'request updated successfully!');
@@ -149,5 +153,48 @@ class SendRequestController extends Controller
         return View('admin.send-request-licence')->with(compact('faculties'));
 
     }
+
+
+    public function getDomainOfBachlor($id){
+
+//      echo json_encode(DB::table('domain')->where('domain.faculty_id',$id)->get());
+//        dd($id,DB::table('domain')->where('domain.faculty_id',$id)->toSql(),DB::table('domain')->where('domain.faculty_id',$id)->get());
+        return DB::table('domain')->where('domain.faculty_id',$id)->get();
+
+    }
+
+    public function getDevisionOfBachlor($id){
+
+//      echo json_encode(DB::table('domain')->where('domain.faculty_id',$id)->get());
+//        dd($id,DB::table('domain')->where('domain.faculty_id',$id)->toSql(),DB::table('domain')->where('domain.faculty_id',$id)->get());
+        return DB::table('division')->where('division.domain_id',$id)->get();
+
+    }
+
+    public function getSpecialityOfBachlor($id){
+
+//      echo json_encode(DB::table('domain')->where('domain.faculty_id',$id)->get());
+//        dd($id,DB::table('domain')->where('domain.faculty_id',$id)->toSql(),DB::table('domain')->where('domain.faculty_id',$id)->get());
+        return DB::table('speciality')->where('speciality.division_id',$id)->get();
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
