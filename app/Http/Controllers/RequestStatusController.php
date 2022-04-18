@@ -47,6 +47,74 @@ class RequestStatusController extends Controller
             return back()->with('status_updated', 'status updated successfully!');
         }
 
+        if ($req->veterinary_status == 'Consulté'){
+
+            DB::table('request_veterinary')->where('request_veterinary_id',$id)->update([
+                'veterinary_status' => 'Signature doyen',
+            ]);
+
+            date_default_timezone_set('Africa/Algiers');
+            DB::table('veterinary_status')->insert([
+                'request_veterinary_id' => $id,
+                'veterinary_status_date' => Carbon::now()->toDateTimeString(),
+                'veterinary_status_code' => 'Signature doyen',
+
+            ]);
+
+            return back()->with('status_updated', 'status updated successfully!');
+        }
+        if ($req->veterinary_status == 'Signature doyen'){
+
+            DB::table('request_veterinary')->where('request_veterinary_id',$id)->update([
+                'veterinary_status' => 'Signature directeur',
+            ]);
+
+            date_default_timezone_set('Africa/Algiers');
+            DB::table('veterinary_status')->insert([
+                'request_veterinary_id' => $id,
+                'veterinary_status_date' => Carbon::now()->toDateTimeString(),
+                'veterinary_status_code' => 'Signature directeur',
+
+            ]);
+
+            return back()->with('status_updated', 'status updated successfully!');
+        }
+
+        if ($req->veterinary_status == 'Signature directeur'){
+
+            DB::table('request_veterinary')->where('request_veterinary_id',$id)->update([
+                'veterinary_status' => 'Enregistrement',
+            ]);
+
+            date_default_timezone_set('Africa/Algiers');
+            DB::table('veterinary_status')->insert([
+                'request_veterinary_id' => $id,
+                'veterinary_status_date' => Carbon::now()->toDateTimeString(),
+                'veterinary_status_code' => 'Enregistrement',
+
+            ]);
+
+            return back()->with('status_updated', 'status updated successfully!');
+        }
+
+        if ($req->veterinary_status == 'Enregistrement'){
+
+            DB::table('request_veterinary')->where('request_veterinary_id',$id)->update([
+                'veterinary_status' => 'Validé',
+            ]);
+
+            date_default_timezone_set('Africa/Algiers');
+            DB::table('veterinary_status')->insert([
+                'request_veterinary_id' => $id,
+                'veterinary_status_date' => Carbon::now()->toDateTimeString(),
+                'veterinary_status_code' => 'Validé',
+
+            ]);
+
+            return back()->with('status_updated', 'status updated successfully!');
+        }
+
+
     }
 
 
@@ -83,6 +151,72 @@ class RequestStatusController extends Controller
                 'request_bachlor_id' => $id,
                 'bachlor_status_date' => Carbon::now()->toDateTimeString(),
                 'bachlor_status_code' => 'Consulté',
+
+            ]);
+
+            return back()->with('status_updated', 'status updated successfully!');
+        }
+        if ($req->bachlor_status == 'Consulté'){
+
+            DB::table('request_bachlor')->where('request_bachlor_id',$id)->update([
+                'bachlor_status' => 'Signature doyen',
+            ]);
+
+            date_default_timezone_set('Africa/Algiers');
+            DB::table('bachlor_status')->insert([
+                'request_bachlor_id' => $id,
+                'bachlor_status_date' => Carbon::now()->toDateTimeString(),
+                'bachlor_status_code' => 'Signature doyen',
+
+            ]);
+
+            return back()->with('status_updated', 'status updated successfully!');
+        }
+        if ($req->bachlor_status == 'Signature doyen'){
+
+            DB::table('request_bachlor')->where('request_bachlor_id',$id)->update([
+                'bachlor_status' => 'Signature directeur',
+            ]);
+
+            date_default_timezone_set('Africa/Algiers');
+            DB::table('bachlor_status')->insert([
+                'request_bachlor_id' => $id,
+                'bachlor_status_date' => Carbon::now()->toDateTimeString(),
+                'bachlor_status_code' => 'Signature directeur',
+
+            ]);
+
+            return back()->with('status_updated', 'status updated successfully!');
+        }
+
+        if ($req->bachlor_status == 'Signature directeur'){
+
+            DB::table('request_bachlor')->where('request_bachlor_id',$id)->update([
+                'bachlor_status' => 'Enregistrement',
+            ]);
+
+            date_default_timezone_set('Africa/Algiers');
+            DB::table('bachlor_status')->insert([
+                'request_bachlor_id' => $id,
+                'bachlor_status_date' => Carbon::now()->toDateTimeString(),
+                'bachlor_status_code' => 'Enregistrement',
+
+            ]);
+
+            return back()->with('status_updated', 'status updated successfully!');
+        }
+
+        if ($req->bachlor_status == 'Enregistrement'){
+
+            DB::table('request_bachlor')->where('request_bachlor_id',$id)->update([
+                'bachlor_status' => 'Validé',
+            ]);
+
+            date_default_timezone_set('Africa/Algiers');
+            DB::table('bachlor_status')->insert([
+                'request_bachlor_id' => $id,
+                'bachlor_status_date' => Carbon::now()->toDateTimeString(),
+                'bachlor_status_code' => 'Validé',
 
             ]);
 
@@ -128,6 +262,73 @@ class RequestStatusController extends Controller
                 'request_master_id' => $id,
                 'matser_status_date' => Carbon::now()->toDateTimeString(),
                 'master_status_code' => 'Consulté',
+
+            ]);
+
+            return back()->with('status_updated', 'status updated successfully!');
+        }
+
+        if ($req->master_status == 'Consulté'){
+
+            DB::table('request_master')->where('request_master_id',$id)->update([
+                'master_status' => 'Signature doyen',
+            ]);
+
+            date_default_timezone_set('Africa/Algiers');
+            DB::table('master_status')->insert([
+                'request_master_id' => $id,
+                'master_status_date' => Carbon::now()->toDateTimeString(),
+                'master_status_code' => 'Signature doyen',
+
+            ]);
+
+            return back()->with('status_updated', 'status updated successfully!');
+        }
+        if ($req->master_status == 'Signature doyen'){
+
+            DB::table('request_master')->where('request_master_id',$id)->update([
+                'master_status' => 'Signature directeur',
+            ]);
+
+            date_default_timezone_set('Africa/Algiers');
+            DB::table('master_status')->insert([
+                'request_master_id' => $id,
+                'master_status_date' => Carbon::now()->toDateTimeString(),
+                'master_status_code' => 'Signature directeur',
+
+            ]);
+
+            return back()->with('status_updated', 'status updated successfully!');
+        }
+
+        if ($req->master_status == 'Signature directeur'){
+
+            DB::table('request_master')->where('request_master_id',$id)->update([
+                'master_status' => 'Enregistrement',
+            ]);
+
+            date_default_timezone_set('Africa/Algiers');
+            DB::table('master_status')->insert([
+                'request_master_id' => $id,
+                'master_status_date' => Carbon::now()->toDateTimeString(),
+                'master_status_code' => 'Enregistrement',
+
+            ]);
+
+            return back()->with('status_updated', 'status updated successfully!');
+        }
+
+        if ($req->master_status == 'Enregistrement'){
+
+            DB::table('request_master')->where('request_master_id',$id)->update([
+                'master_status' => 'Validé',
+            ]);
+
+            date_default_timezone_set('Africa/Algiers');
+            DB::table('master_status')->insert([
+                'request_master_id' => $id,
+                'master_status_date' => Carbon::now()->toDateTimeString(),
+                'master_status_code' => 'Validé',
 
             ]);
 
