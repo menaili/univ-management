@@ -6,6 +6,7 @@ use App\Http\Controllers\RequestController;
 use App\Http\Controllers\SendRequestController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\RequestLevelController;
+use App\Http\Controllers\RequestStatusController;
 ;
 use Illuminate\Support\Facades\Route;
 
@@ -47,7 +48,9 @@ Route::post('/Send-request-sub', [SendRequestController::class, 'addRequest'])->
 
 Route::get('/Send-request', [SendRequestController::class, 'getLevelFaculty'])->name('get.faculty');
 
-Route::get('/Status-update/{id}', [RequestController::class, 'changeStatus'])->name('update.status');
+Route::get('/Request-veterinary-status', [RequestStatusController::class, 'getAllRequestsStatusVeterinary'])->name('get.request.veterinary');
+
+Route::get('/Status-update/{id}', [RequestStatusController::class, 'changeStatusVeterinary'])->name('update.status.veterinary');
 
 Route::get('/Requests-edit/{id}', [SendRequestController::class, 'getByIdVeterinary'])->name('edit.requests');
 
@@ -84,6 +87,11 @@ Route::get('/Request-licence', [\App\Http\Controllers\RequestLevelController::cl
 
 Route::get('/Requests-delete/{id}', [RequestLevelController::class, 'deleteById'])->name('delete.requests.licence');
 
+Route::get('/Request-bachlor-status', [RequestStatusController::class, 'getAllRequestsStatusBachlor'])->name('get.request.bachlor');
+
+Route::get('/Status-update-bachlor/{id}', [RequestStatusController::class, 'changeStatusBachlor'])->name('update.status.bachlor');
+
+
 //-----------------------------Master------------------------------------------------------------
 
 
@@ -107,6 +115,9 @@ Route::get('/getSpecialityOfBachlor/{id}', [SendRequestController::class, 'getSp
 
 Route::get('/Request-master', [\App\Http\Controllers\RequestLevelController::class, 'getAllMasterRequests'])->name('get.request.master');
 
+Route::get('/Request-master-status', [RequestStatusController::class, 'getAllRequestsStatusMaster'])->name('get.request.master');
+
+Route::get('/Status-update-master/{id}', [RequestStatusController::class, 'changeStatusMaster'])->name('update.status.master');
 
 
 
