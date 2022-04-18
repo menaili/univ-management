@@ -30,10 +30,10 @@ Route::get('/about-me',function () {
     return view('about');
 })->name("about");
 
-Route::get('/final',function () {
-
-    return view('admin.request-view.delivred');
-})->name("sss");
+//Route::get('/final',function () {
+//
+//    return view('admin.request-view.delivred');
+//})->name("sss");
 
 Route::view('contact-me','contact',[
     'Page_name'=> 'Contact us',
@@ -180,6 +180,12 @@ Route::get('/getDomainOfSpeciality/{id}', [DepartementController::class, 'getDom
 
 Route::get('/getDevisionOfSpeciality/{id}', [DepartementController::class, 'getDevisionOfSpeciality'])->name('get.devision.Speciality');
 
+
+
+
+Route::get('/getPDF', [\App\Http\Controllers\PrintController::class, 'getPDF'])->name('get.pdf');
+
+Route::get('/printPDF', [\App\Http\Controllers\PrintController::class, 'printPDF'])->name('print.pdf');
 
 
 

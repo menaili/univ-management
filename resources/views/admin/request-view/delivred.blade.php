@@ -58,50 +58,24 @@
         }
 
 
-        body {
-            width: 230mm;
-            height: 100%;
-            margin: 0 auto;
-            padding: 0;
-            font-size: 12pt;
-        }
-        * {
-            box-sizing: border-box;
-            -moz-box-sizing: border-box;
-        }
-        .main-page {
-            width: 297mm;
-            min-height: 210mm;
-            margin: 10mm auto;
+        .A4 {
+
+        page {
             background: white;
-            box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 0.5cm;
+            width: 21cm;
+            height: 29.7cm;
         }
-        .sub-page {
-            padding: 1cm;
-            height: 210mm;
-        }
-        @page {
-            size: A4;
-            margin: 0;
-        }
+
         @media print {
-            html, body {
-                width: 297mm;
-                height: 210mm;
-            }
-            .main-page {
+            body, page {
                 margin: 0;
-                border: initial;
-                border-radius: initial;
-                width: initial;
-                min-height: initial;
-                box-shadow: initial;
-                background: initial;
-                page-break-after: always;
+                box-shadow: 0;
             }
-
         }
-
+        }
 
 
 
@@ -110,17 +84,19 @@
 </head>
 <body>
 <div>
+    <button id="foot"><button class="button-os"><a href="/univ-certaficate-management/public/printPDF">BUTTON</a></button></button>
+</div>
+<div class="A4">
+    @foreach($requests as $key => $request)
 <h3 style="
   position: relative;
   left: 297mm;
-  ">menaili</h3>
-<h3>menaili</h3>
-<h3>menaili</h3>
-<h3>menaili</h3>
+  "> {{$request->bachlor_student_first_name}}</h3>
+<h3>{{$request->bachlor_student_last_name}}</h3>
+<h3>{{$request->bachlor_student_birthday}}</h3>
+    @endforeach
 </div>
 
-<div>
-<button id="foot"><button class="button-os"><a href="#">BUTTON</a></button></button>
-</div>
+
 </body>
 </html>
