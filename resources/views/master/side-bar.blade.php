@@ -51,21 +51,25 @@
                               <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-3.5-2a.5.5 0 0 0-.5.5v1h-1a.5.5 0 0 0 0 1h1v1a.5.5 0 0 0 1 0v-1h1a.5.5 0 0 0 0-1h-1v-1a.5.5 0 0 0-.5-.5Z"/>
                           </svg>Add Requests</a>
                       <ul>
-                          <li><a href="/univ-certaficate-management/public/Send-request-licence">Requests Licence</a></li>
-                          <li><a href="/univ-certaficate-management/public/Add-devision">Requests Master</a></li>
-                          <li><a href="/univ-certaficate-management/public/Send-request">Requests Veterinary</a></li>
+                          <li><a href="/univ-certaficate-management/public/Send-request-licence">Send Requests Licence</a></li>
+                          <li><a href="/univ-certaficate-management/public/Send-request-master">Send Requests Master</a></li>
+                          <li><a href="/univ-certaficate-management/public/Send-request">Send Requests Veterinary</a></li>
 
                       </ul>
                   </li>
 
-                  <li><a href="/univ-certaficate-management/public/Requests">
+                  <li class="affan-dropdown-menu"><a href="#">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
                               <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
                               <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
-                          </svg>Requests<span class="badge bg-danger rounded-pill ms-2"></span></a></li>
+                          </svg>Requests</a>
+                      <ul>
+                          <li><a href="/univ-certaficate-management/public/Request-licence">Requests Licence</a></li>
+                          <li><a href="/univ-certaficate-management/public/Request-master">Requests Master</a></li>
+                          <li><a href="/univ-certaficate-management/public/Request-veterinary">Requests Veterinary</a></li>
+
+                      </ul>
                   </li>
-
-
 
                   <li><a href="/univ-certaficate-management/public/Requests-status">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
@@ -74,18 +78,6 @@
                           </svg>requests Status<span class="badge bg-success rounded-pill ms-2"></span></a></li>
 
 
-                  </li>
-                  <li class="affan-dropdown-menu"><a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-steps" viewBox="0 0 16 16">
-                              <path d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0zM2 1.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"/>
-                          </svg>Department management</a>
-                      <ul>
-                          <li><a href="/univ-certaficate-management/public/Add-faculty">Faculty</a></li>
-                          <li><a href="/univ-certaficate-management/public/Add-domain">Domain</a></li>
-                          <li><a href="/univ-certaficate-management/public/Add-devision">Division</a></li>
-                          <li><a href="/univ-certaficate-management/public/Add-speciality">Speciality</a></li>
-                      </ul>
-                  </li>
 
                   <li>
                       <div class="night-mode-nav">

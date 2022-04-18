@@ -1,4 +1,4 @@
-@extends('master.master')
+@extends('master.master2')
 
 @section('title', 'add-devision')
 

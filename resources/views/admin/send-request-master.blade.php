@@ -1,8 +1,8 @@
-@extends('master.master2')
+@extends('master.master')
 
-@section('title', 'add-domain')
+@section('title', 'send-request')
 
-@section('title-page', 'add domain')
+@section('title-page', 'Send Request master')
 
 
 @section('content')
@@ -15,26 +15,99 @@
                 <div class="card">
                     <div class="card-body checkout-form">
                         <h6 class="mb-3">Enter your informations</h6>
-                        @if (Session::has('domain_added'))
+                        @if (Session::has('request_sent'))
                             <div class="alert alert-success">
-                                {{Session::get('domain_added')}}
+                                {{Session::get('request_sent')}}
                             </div>
 
                         @endif
-                        <form  action="{{ route('domain.sub')}}" method="POST">
+                        <form  action="{{ route('request.sub.master')}}" method="POST">
                             @csrf
-                            <div class="form-group">
-                                <select class="form-select mb-3" id="faculty" name="faculty" aria-label="faculty">
-                                    @foreach($faculties as $key => $faculty)
-                                        <option value="{{$faculty->faculty_id}}" selected>{{$faculty->faculty_code }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
                             <div>
                                 <div class="form-group">
-                                    <input class="form-control mb-3" type="text" id="domain_name" name="domain_name" placeholder="Domain name">
+                                    <input class="form-control mb-3" type="text" id="firstname" name="firstname" placeholder="Your first name">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control mb-3" type="text" id="lastname" name="lastname" placeholder="Your las name">
+                                </div>
+                                Your Birthday:
+                                <div class="form-group">
+                                    <input class="form-control mb-3" type="date" id="dateOfBirth" name="dateOfBirth" placeholder="Birthday">
                                 </div>
 
+                                <div class="form-group">
+                                    <input class="form-control mb-3" type="text" id="diplomanumber" name="diplomanumber" placeholder="diploma number">
+                                </div>
+                                date of diploma:
+                                <div class="form-group">
+                                    <input class="form-control mb-3" type="date" id="dateOfDiploma" name="dateOfDiploma" placeholder="date of diploma">
+                                </div>
+
+
+                                Your faculty:
+                                <div class="form-group">
+                                    <select class="form-select mb-3" id="faculty" name="faculty" aria-label="faculty">
+                                        <option value="0" selected>Faculty</option>
+                                        @foreach($faculties as $key => $faculty)
+                                            <option value="{{$faculty->faculty_id}}" >{{$faculty->faculty_code }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                Your domain:
+                                <div class="form-group">
+                                    <select class="form-select mb-3 domain_bb" id="domain" name="domain" aria-label="domain">
+                                        <option value="0" selected>Domain</option>
+                                    </select>
+                                </div>
+                                Your devision:
+                                <div class="form-group">
+                                    <select class="form-select mb-3 devision_bb" id="devision" name="devision" aria-label="devision">
+                                        <option value="0" selected>Devision</option>
+                                    </select>
+                                </div>
+                                Your speciality:
+                                <div class="form-group">
+                                    <select class="form-select mb-3 speciality_bb" id="speciality" name="speciality" aria-label="speciality">
+                                        <option value="0" selected>Speciality</option>
+                                    </select>
+                                </div>
+
+
+
+                                <!--
+                                <div class="form-group">
+                                  <select class="form-select mb-3" id="speciality" name="speciality" aria-label="speciality">
+                                    <option value="1" selected>Your Speciality</option>
+                                    <option value="2">Dhaka</option>
+                                    <option value="3">Barishal</option>
+                                    <option value="3">Khulna</option>
+                                  </select>
+                                </div>
+                                -->
+
+                                <!--
+                                 <div class="form-group">
+                                   <input class="form-control mb-3" type="text" id="Bdiplome" placeholder="Bachelors Degree">
+                                 </div>
+                                 <div class="form-group">
+                                   <input class="form-control mb-3" type="text" id="Mdiplome" placeholder="Master's degree">
+                                 </div>
+                                 <div class="form-group">
+                                   <input class="form-control mb-3" type="text" id="Scard" placeholder="student card">
+                                 </div>-->
+                                <div class="form-group">
+                                    <textarea class="form-control mb-3" id="note" name="note" cols="30" rows="10" placeholder="Notes"></textarea>
+                                </div>
+                                <!--
+                                <div class="form-check mb-2">
+                                  <input class="form-check-input" type="checkbox" name="exampleRadio" id="darkRadio1" checked>
+                                  <label class="form-check-label" for="darkRadio1">Regular Courier $0.49</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                  <input class="form-check-input" type="checkbox" name="exampleRadio" id="darkRadio2">
+                                  <label class="form-check-label" for="darkRadio2">Free Shipping $0</label>
+                                </div>
+                              -->
                                 <button class="btn btn-danger mt-3 w-100" id="send-request-btn" style="background:rgb(7, 207, 0); border-color:rgb(7, 207, 0) ;">Send Request</button>
                             </div>
                         </form>
@@ -96,7 +169,11 @@
     <script src="{{ asset('assets/js/ion.rangeSlider.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/active.js') }}"></script>
+    <script src="{{ asset('assets/send-bachlor.ajax.js') }}"></script>
+
     <!-- PWA -->
     <script src="{{ asset('assets/js/pwa.js') }} "></script>
+    <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
+
 
 @endsection

@@ -22,62 +22,82 @@
 
             @endif
 
-            <form  action="{{ route('update.requests')}}">
+            <form  action="{{ route('update.requests.licence')}}">
               @csrf
             <div>
               <div class="form-group">
-                <input class="form-control mb-3" type="text" id="firstnameedit" name="firstname" value="{{ $requests->requests_student_first_name }}">
+                <input class="form-control mb-3" type="text" id="firstnameedit" name="firstname" value="{{ $requests->bachlor_student_first_name }}">
               </div>
               <div class="form-group">
-                <input class="form-control mb-3" type="text" id="lastnameedit" name="lastname" value="{{ $requests->requests_student_second_name }}">
+                <input class="form-control mb-3" type="text" id="lastnameedit" name="lastname" value="{{ $requests->bachlor_student_last_name }}">
               </div>
               Your Birthday:
               <div class="form-group">
-                <input class="form-control mb-3" type="date" id="dateOfBirthedit" name="dateOfBirth" value="{{ $requests->requests_student_birthday }}">
+                <input class="form-control mb-3" type="date" id="dateOfBirthedit" name="dateOfBirth" value="{{ $requests->bachlor_student_birthday }}">
               </div>
 
               <div class="form-group">
-                <input class="form-control mb-3" type="text" id="diplomanumberedit" name="diplomanumber" value="{{ $requests->diploma_N }}">
+                <input class="form-control mb-3" type="text" id="diplomanumberedit" name="diplomanumber" value="{{ $requests->bachlor_diploma_number }}">
               </div>
               date of diploma:
               <div class="form-group">
-                <input class="form-control mb-3" type="date" id="dateOfDiplomaedit" name="dateOfDiploma" value="{{ $requests->diploma_date }}">
+                <input class="form-control mb-3" type="date" id="dateOfDiplomaedit" name="dateOfDiploma" value="{{ $requests->bachlor_diploma_date }}">
               </div>
 
+                Your faculty:
+                <div class="form-group">
+{{--                    <select class="form-select mb-3" id="faculty" name="faculty" aria-label="faculty">--}}
+{{--                        <option value="0" selected>Faculty</option>--}}
+{{--                        @foreach($faculties as $key => $faculty)--}}
+{{--                            <option value="{{$faculty->faculty_id}}" >{{$faculty->faculty_code }}</option>--}}
+{{--                        @endforeach--}}
+{{--                    </select>--}}
+                </div>
+                Your domain:
+                <div class="form-group">
+                    <select class="form-select mb-3 domain_bb" id="domain" name="domain" aria-label="domain">
+                        <option value="0" selected>Domain</option>
+                    </select>
+                </div>
+                Your devision:
+                <div class="form-group">
+                    <select class="form-select mb-3 devision_bb" id="devision" name="devision" aria-label="devision">
+                        <option value="0" selected>Devision</option>
+                    </select>
+                </div>
+                Your speciality:
+                <div class="form-group">
+                    <select class="form-select mb-3 speciality_bb" id="speciality" name="speciality" aria-label="speciality">
+                        <option value="0" selected>Speciality</option>
+                    </select>
+                </div>
+
+
+
+                <!--
+                <div class="form-group">
+                  <select class="form-select mb-3" id="speciality" name="speciality" aria-label="speciality">
+                    <option value="1" selected>Your Speciality</option>
+                    <option value="2">Dhaka</option>
+                    <option value="3">Barishal</option>
+                    <option value="3">Khulna</option>
+                  </select>
+                </div>
+                -->
+
+                <!--
+                 <div class="form-group">
+                   <input class="form-control mb-3" type="text" id="Bdiplome" placeholder="Bachelors Degree">
+                 </div>
+                 <div class="form-group">
+                   <input class="form-control mb-3" type="text" id="Mdiplome" placeholder="Master's degree">
+                 </div>
+                 <div class="form-group">
+                   <input class="form-control mb-3" type="text" id="Scard" placeholder="student card">
+                 </div>-->
+
               <div class="form-group">
-                <select class="form-select mb-3" id="faculty" name="facultyedit" aria-label="faculty">
-                  <option value="1" selected>Your Faculty</option>
-
-
-                </select>
-              </div>
-              <div class="form-group">
-                <input class="form-control mb-3" type="text" id="speciality" name="specialityedit" value="{{ $requests->request_sp }}">
-              </div>
-              <!--
-              <div class="form-group">
-                <select class="form-select mb-3" id="speciality" name="speciality" aria-label="speciality">
-                  <option value="1" selected>Your Speciality</option>
-                  <option value="2">Dhaka</option>
-                  <option value="3">Barishal</option>
-                  <option value="3">Khulna</option>
-                </select>
-              </div>
-              -->
-              <div class="form-group">
-                <select class="form-select mb-3" id="level" name="leveledit" aria-label="levem">
-                  <option value="1" selected>Your level</option>
-                  {{-- @foreach ($level as $key => $level )
-
-                  <option value={{$level->level_id}}>{{$level->level_code}}</option>';
-
-                  @endforeach --}}
-
-                </select>
-              </div>
-
-              <div class="form-group">
-                <textarea class="form-control mb-3" id="note" name="noteedit" cols="30" rows="10">{{ $requests->request_note }}</textarea>
+                <textarea class="form-control mb-3" id="note" name="noteedit" cols="30" rows="10">{{ $requests->bachlor_note }}</textarea>
               </div>
               <!--
               <div class="form-check mb-2">
@@ -149,8 +169,10 @@
   <script src="{{ asset('assets/js/dark-mode-switch.js') }}"></script>
   <script src="{{ asset('assets/js/ion.rangeSlider.min.js') }}"></script>
   <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('assets/js/active.js') }}"></script>
-  <!-- PWA -->
-  <script src="{{ asset('assets/js/pwa.js') }} "></script>
+<script src="{{ asset('assets/send-bachlor.ajax.js') }}"></script>
+
+<!-- PWA -->
+<script src="{{ asset('assets/js/pwa.js') }} "></script>
+<script src="http://code.jquery.com/jquery-3.4.1.js"></script>
 
 @endsection

@@ -5,6 +5,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\SendRequestController;
 use App\Http\Controllers\DepartementController;
+use App\Http\Controllers\RequestLevelController;
+;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +29,11 @@ Route::get('/about-me',function () {
     return view('about');
 })->name("about");
 
+Route::get('/final',function () {
+
+    return view('admin.request-view.delivred');
+})->name("sss");
+
 Route::view('contact-me','contact',[
     'Page_name'=> 'Contact us',
     'page_des'=> 'hello evry one am haroun errachide'
@@ -42,11 +49,16 @@ Route::get('/Send-request', [SendRequestController::class, 'getLevelFaculty'])->
 
 Route::get('/Status-update/{id}', [RequestController::class, 'changeStatus'])->name('update.status');
 
-Route::get('/Requests-edit/{id}', [SendRequestController::class, 'getById'])->name('edit.requests');
+Route::get('/Requests-edit/{id}', [SendRequestController::class, 'getByIdVeterinary'])->name('edit.requests');
 
-Route::get('/Requests-update', [SendRequestController::class, 'updateById'])->name('update.requests');
+Route::get('/Requests-update', [SendRequestController::class, 'updateByIdVeterinary'])->name('update.requests');
 
-Route::get('/Requests-delete/{id}', [RequestController::class, 'deleteById'])->name('delete.requests');
+Route::get('/Requests-delete-veterinary/{id}', [RequestLevelController::class, 'deleteByIdVeterinary'])->name('delete.requests.veterinary');
+
+Route::get('/Request-veterinary', [RequestLevelController::class, 'getAllVeterinaryRequests'])->name('get.request.veterinary');
+
+
+
 
 //-----------------------------Licence------------------------------------------------------------
 
@@ -70,7 +82,48 @@ Route::get('/getSpecialityOfBachlor/{id}', [SendRequestController::class, 'getSp
 
 Route::get('/Request-licence', [\App\Http\Controllers\RequestLevelController::class, 'getAllBachlorRequests'])->name('get.request.bachlor');
 
+Route::get('/Requests-delete/{id}', [RequestLevelController::class, 'deleteById'])->name('delete.requests.licence');
+
 //-----------------------------Master------------------------------------------------------------
+
+
+Route::get('/Send-request-master', [SendRequestController::class, 'indemaster'])->name('send-request.indexMaster');
+
+Route::post('/Send-request-sub-master', [SendRequestController::class, 'addRequestMaster'])->name('request.sub.master');
+
+Route::get('/Send-request-master', [SendRequestController::class, 'getMasterFaculty'])->name('get.faculty.master');
+
+//Route::get('/Requests-edit/{id}', [SendRequestController::class, 'getByIdLicence'])->name('edit.requests.licence');
+
+//Route::get('/Requests-update-licence', [SendRequestController::class, 'updateByIdLicence'])->name('update.requests.licence');
+
+Route::get('/Requests-delete-master/{id}', [RequestLevelController::class, 'deleteByIdMaster'])->name('delete.requests.master');
+
+Route::get('/getDomainOfBachlor/{id}', [SendRequestController::class, 'getDomainOfMaster'])->name('get.domain.master');
+
+Route::get('/getDevisionOfBachlor/{id}', [SendRequestController::class, 'getDevisionOfMaster'])->name('get.devision.master');
+
+Route::get('/getSpecialityOfBachlor/{id}', [SendRequestController::class, 'getSpecialityOfMaster'])->name('get.speciality.master');
+
+Route::get('/Request-master', [\App\Http\Controllers\RequestLevelController::class, 'getAllMasterRequests'])->name('get.request.master');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------------------------------------------------------------------------------------
 
 Route::get('/Requests', [RequestController::class, 'getAllRequests'])->name('get.requests');
 

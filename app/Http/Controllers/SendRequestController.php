@@ -42,7 +42,7 @@ class SendRequestController extends Controller
 
 
 
-    public function getById($id){
+    public function getByIdVeterinary($id){
 
         $requests = DB::table('request_veterinary')->where('request_veterinary_id',$id)->first();
         return view('admin.edit-request',compact('requests'));
@@ -50,7 +50,7 @@ class SendRequestController extends Controller
     }
 
 
-    public function updateById($request){
+    public function updateByIdVeterinary($request){
 
 
 
@@ -180,21 +180,80 @@ class SendRequestController extends Controller
     }
 
 
+//----edit-licence----
+
+
+    public function getLevelFacultylicence(){
+        $faculties = DB::table('faculty')->get();
+
+        return View('admin.edit-request')->with(compact('faculties'));
+
+    }
 
 
 
 
 
+//----------------------MASTER-------------------------------------------
+
+    public function indexMaster($name = null){
+        return view('admin.send-request-master');
+    }
 
 
+    public function addRequestMaster(Request $request){
+//        $request -> all();
+//        DB::table('requests')->insert($request -> all());
+        date_default_timezone_set('Africa/Algiers');
+        DB::table('request_master')->insert([
+
+            'master_student_first_name' => $request->firstname,
+            'master_student_last_name' => $request->lastname,
+            'master_student_birthday' => $request->dateOfBirth,
+            'master_diploma_number' => $request->diplomanumber,
+            'master_diploma_date' => $request->dateOfDiploma,
+            'faculty_id' => $request->faculty,
+            'master_domain' => $request->domain,
+            'master_division' => $request->devision,
+            'master_speciality' => $request->speciality,
+            'master_status_date' => Carbon::now()->toDateTimeString(),
 
 
+        ]);
+        return back()->with('request_sent', 'request sent successfully!');
+    }
 
 
+    public function getMasterFaculty(){
+        $faculties = DB::table('faculty')->get();
+
+        return View('admin.send-request-master')->with(compact('faculties'));
+
+    }
 
 
+    public function getDomainOfMaster($id){
 
+//      echo json_encode(DB::table('domain')->where('domain.faculty_id',$id)->get());
+//        dd($id,DB::table('domain')->where('domain.faculty_id',$id)->toSql(),DB::table('domain')->where('domain.faculty_id',$id)->get());
+        return DB::table('domain')->where('domain.faculty_id',$id)->get();
 
+    }
 
+    public function getDevisionOfMaster($id){
+
+//      echo json_encode(DB::table('domain')->where('domain.faculty_id',$id)->get());
+//        dd($id,DB::table('domain')->where('domain.faculty_id',$id)->toSql(),DB::table('domain')->where('domain.faculty_id',$id)->get());
+        return DB::table('division')->where('division.domain_id',$id)->get();
+
+    }
+
+    public function getSpecialityOfMaster($id){
+
+//      echo json_encode(DB::table('domain')->where('domain.faculty_id',$id)->get());
+//        dd($id,DB::table('domain')->where('domain.faculty_id',$id)->toSql(),DB::table('domain')->where('domain.faculty_id',$id)->get());
+        return DB::table('speciality')->where('speciality.division_id',$id)->get();
+
+    }
 
 }
