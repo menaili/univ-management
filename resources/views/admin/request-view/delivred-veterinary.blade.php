@@ -86,14 +86,14 @@
 <body>
 
 <div class="A4">
-    @foreach($requests as $key => $request)
-<h3 style="
+    @foreach($requests_veterinary as $key => $request)
+        <h3 style="
   position: relative;
   left: 297mm;
   top:10cm;
-  "> {{$request->bachlor_student_first_name}} {{$request->bachlor_student_last_name}}</h3>
-<h3></h3>
-<h3>{{$request->bachlor_student_birthday}}</h3>
+  "> {{$request->veterinary_student_first_name}} {{$request->veterinary_student_last_name}}</h3>
+        <h3></h3>
+        <h3>{{$request->veterinary_student_birthday}}</h3>
     @endforeach
 </div>
 

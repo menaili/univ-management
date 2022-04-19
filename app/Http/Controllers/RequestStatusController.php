@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class RequestStatusController extends Controller
 {
@@ -112,6 +113,14 @@ class RequestStatusController extends Controller
             ]);
 
             return back()->with('status_updated', 'status updated successfully!');
+        }
+        if ($req->veterinary_status == 'Validé'){
+
+            $requests_veterinary = DB::table('request_veterinary')->where('request_veterinary_id',$id)->get();
+            $pdf = PDF::loadView('admin.request-view.delivred-veterinary',compact('requests_veterinary'));
+
+            return $pdf->download('request-veterinary.pdf');
+
         }
 
 
@@ -222,6 +231,15 @@ class RequestStatusController extends Controller
 
             return back()->with('status_updated', 'status updated successfully!');
         }
+        if ($req->bachlor_status == 'Validé'){
+
+            $requests = DB::table('request_bachlor')->where('request_bachlor_id',$id)->get();
+            $pdf = PDF::loadView('admin.request-view.delivred',compact('requests'));
+
+            return $pdf->download('request-bachlor.pdf');
+
+        }
+
 
     }
 
@@ -333,6 +351,14 @@ class RequestStatusController extends Controller
             ]);
 
             return back()->with('status_updated', 'status updated successfully!');
+        }
+        if ($req->master_status == 'Validé'){
+
+            $requests_master = DB::table('request_master')->where('request_master_id',$id)->get();
+            $pdf = PDF::loadView('admin.request-view.delivred-master',compact('requests_master'));
+
+            return $pdf->download('request-master.pdf');
+
         }
 
     }

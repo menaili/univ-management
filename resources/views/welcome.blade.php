@@ -50,8 +50,8 @@
     <div class="container">
         <div class="card bg-primary mb-3 bg-img" style="background-image: url('img/core-img/1.png')">
             <div class="card-body direction-rtl p-5">
-                <h2 class="text-white">Ready pages</h2>
-                <p class="mb-4 text-white">Already designed more than 35+ pages for your needs. Such as - Authentication, Chats, eCommerce, Blog &amp; Miscellaneous pages.</p><a class="btn btn-warning" href="pages.html">All pages</a>
+                <h2 class="text-white">Faculties management</h2>
+                <p class="mb-4 text-white">You can manage faculties with add, updates and delete (faculties, domain, devision, speciality).</p><a class="btn btn-warning" href="http://localhost/univ-certaficate-management/public/Add-faculty">Get it</a>
             </div>
         </div>
     </div>
