@@ -116,7 +116,16 @@ class RequestStatusController extends Controller
         }
         if ($req->veterinary_status == 'Validé'){
 
-            $requests_veterinary = DB::table('request_veterinary')->where('request_veterinary_id',$id)->get();
+            $requests_veterinary = DB::table('request_bachlor')
+
+                ->join('faculty', 'request_bachlor.faculty_id', '=', 'faculty.faculty_id')
+                ->join('domain', 'domain.domain_id', '=', 'request_bachlor.bachlor_domain')
+                ->join('division', 'division.division_id', '=', 'request_bachlor.bachlor_division')
+                ->join('speciality', 'speciality.speciality_id', '=', 'request_bachlor.bachlor_speciality')
+
+                ->select('request_bachlor.*','faculty.*','domain.*','division.*','speciality.*')
+                ->where('request_bachlor_id',$id)
+                ->get();
             $pdf = PDF::loadView('admin.request-view.delivred-veterinary',compact('requests_veterinary'));
 
             return $pdf->download('request-veterinary.pdf');
@@ -233,8 +242,18 @@ class RequestStatusController extends Controller
         }
         if ($req->bachlor_status == 'Validé'){
 
-            $requests = DB::table('request_bachlor')->where('request_bachlor_id',$id)->get();
-            $pdf = PDF::loadView('admin.request-view.delivred',compact('requests'));
+            $requests = DB::table('request_bachlor')
+
+                ->join('faculty', 'request_bachlor.faculty_id', '=', 'faculty.faculty_id')
+                ->join('domain', 'domain.domain_id', '=', 'request_bachlor.bachlor_domain')
+                ->join('division', 'division.division_id', '=', 'request_bachlor.bachlor_division')
+                ->join('speciality', 'speciality.speciality_id', '=', 'request_bachlor.bachlor_speciality')
+
+                ->select('request_bachlor.*','faculty.*','domain.*','division.*','speciality.*')
+                ->where('request_bachlor_id',$id)
+                ->get();
+
+            $pdf = PDF::loadView('admin.request-view.delivred',compact('requests'))->setPaper('a4', 'landscape');
 
             return $pdf->download('request-bachlor.pdf');
 

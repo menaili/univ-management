@@ -1,8 +1,8 @@
 @extends('master.master2')
 
-@section('title', 'add-devision')
+@section('title', 'ajou-filière')
 
-@section('title-page', 'add devision')
+@section('title-page', 'ajouter filière')
 
 
 @section('content')
@@ -14,7 +14,7 @@
             <div class="checkout-wrapper-area">
                 <div class="card">
                     <div class="card-body checkout-form">
-                        <h6 class="mb-3">Enter your informations</h6>
+                        <h6 class="mb-3">Entre votre informations</h6>
                         @if (Session::has('devision_added'))
                             <div class="alert alert-success">
                                 {{Session::get('devision_added')}}
@@ -24,8 +24,8 @@
                         <form  action="{{ route('devision.sub')}}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <select class="form-select mb-3 faculty" data-dependent="domain" id="faculty" name="faculty" aria-label="faculty">
-                                    <option value="0" selected>Faculty</option>
+                                <select class="form-select mb-3 faculty" data-dependent="domain" id="faculty" name="faculty" aria-label="faculté">
+                                    <option value="0" selected>Faculté</option>
 
                                 @foreach($faculties as $key => $faculty)
                                         <option value="{{$faculty->faculty_id}}" >{{$faculty->faculty_code }}</option>
@@ -34,16 +34,21 @@
                             </div>
                             <div class="form-group">
                                 <select class="form-select mb-3 domain_cc" id="damain" name="domain" aria-label="damain">
-                                    <option value="0" selected>Domain</option>
+                                    <option value="0" selected>Domaine</option>
                                 </select>
                             </div>
                             {{ csrf_field() }}
                             <div>
+
                                 <div class="form-group">
-                                    <input class="form-control mb-3" type="text" id="devision_name" name="devision_name" placeholder="Devision name">
+                                    <input class="form-control mb-3" type="text" id="devision_name_fr" name="devision_name_fr" placeholder="Nom de filière">
                                 </div>
 
-                                <button class="btn btn-danger mt-3 w-100" id="send-request-btn" style="background:rgb(7, 207, 0); border-color:rgb(7, 207, 0) ;">Send Request</button>
+                                <div class="form-group">
+                                    <input class="form-control mb-3" type="text" id="devision_name" name="devision_name" placeholder="Nom de filière en arabe">
+                                </div>
+
+                                <button class="btn btn-danger mt-3 w-100" id="send-request-btn" style="background:rgb(7, 207, 0); border-color:rgb(7, 207, 0) ;">Ajouter</button>
                             </div>
                         </form>
                     </div>
@@ -116,7 +121,7 @@
     <script src="{{ asset('assets/js/ion.rangeSlider.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/active.js') }}"></script>
-    <script src="{{ asset('assets/devision.ajax.js') }}"></script>
+{{--    <script src="{{ asset('assets/devision.ajax.js') }}"></script>--}}
     <!-- PWA -->
     <script src="{{ asset('assets/js/pwa.js') }} "></script>
     <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
@@ -129,10 +134,11 @@
             $.ajax({
                 type:'GET',
                 url: "http://localhost/univ-certaficate-management/public/getDomainOfDevision/"+ id,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
-                },
+                 headers: {
+                     'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+                 },
                 success: function(reponse){
+                    alert(id);
                     console.log(reponse);
                     // var x = JSON.parse(reponse);
                     var h ='<option value="0" disabled selected>Processing...</option>';

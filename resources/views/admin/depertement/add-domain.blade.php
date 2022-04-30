@@ -1,8 +1,8 @@
 @extends('master.master2')
 
-@section('title', 'add-domain')
+@section('title', 'ajout-domain')
 
-@section('title-page', 'add domain')
+@section('title-page', 'Ajouter domaine')
 
 
 @section('content')
@@ -14,7 +14,7 @@
             <div class="checkout-wrapper-area">
                 <div class="card">
                     <div class="card-body checkout-form">
-                        <h6 class="mb-3">Enter your informations</h6>
+                        <h6 class="mb-3">Entre votre informations</h6>
                         @if (Session::has('domain_added'))
                             <div class="alert alert-success">
                                 {{Session::get('domain_added')}}
@@ -25,17 +25,24 @@
                             @csrf
                             <div class="form-group">
                                 <select class="form-select mb-3" id="faculty" name="faculty" aria-label="faculty">
+                                    <option value="" selected>Faculté</option>
                                     @foreach($faculties as $key => $faculty)
-                                        <option value="{{$faculty->faculty_id}}" selected>{{$faculty->faculty_code }}</option>
+                                        <option value="{{$faculty->faculty_id}}" >{{$faculty->faculty_code }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div>
                                 <div class="form-group">
-                                    <input class="form-control mb-3" type="text" id="domain_name" name="domain_name" placeholder="Domain name">
+                                    <input class="form-control mb-3" type="text" id="domain_name_fr" name="domain_name_fr" placeholder="Nom de domaine">
                                 </div>
 
-                                <button class="btn btn-danger mt-3 w-100" id="send-request-btn" style="background:rgb(7, 207, 0); border-color:rgb(7, 207, 0) ;">Send Request</button>
+                                <div class="form-group">
+                                    <input class="form-control mb-3" type="text" id="domain_name" name="domain_name" placeholder="Nom de domaine en arabe">
+                                </div>
+
+
+
+                                <button class="btn btn-danger mt-3 w-100" id="send-request-btn" style="background:rgb(7, 207, 0); border-color:rgb(7, 207, 0) ;">Ajouter</button>
                             </div>
                         </form>
                     </div>

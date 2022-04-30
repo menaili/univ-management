@@ -1,8 +1,8 @@
 @extends('master.master2')
 
-@section('title', 'add-faculty')
+@section('title', 'ajout-faculté')
 
-@section('title-page', 'add faculty')
+@section('title-page', 'Ajouter faculté')
 
 
 @section('content')
@@ -14,7 +14,7 @@
       <div class="checkout-wrapper-area">
         <div class="card">
           <div class="card-body checkout-form">
-            <h6 class="mb-3">Enter your informations</h6>
+            <h6 class="mb-3">Entre votre informations</h6>
             @if (Session::has('faculty_added'))
             <div class="alert alert-success">
               {{Session::get('faculty_added')}}
@@ -25,10 +25,15 @@
               @csrf
             <div>
               <div class="form-group">
-                <input class="form-control mb-3" type="text" id="faculty_name" name="faculty_name" placeholder="Faculty name">
+                <input class="form-control mb-3" type="text" id="faculty_name" name="faculty_name" placeholder="nom de faculté">
               </div>
 
-              <button class="btn btn-danger mt-3 w-100" id="send-request-btn" style="background:rgb(7, 207, 0); border-color:rgb(7, 207, 0) ;">Send Request</button>
+              <div class="form-group">
+                              <input class="form-control mb-3" type="text" id="faculty_name_ar" name="faculty_name_ar" placeholder="nom de faculté en arabe">
+                            </div>
+
+
+              <button class="btn btn-danger mt-3 w-100" id="send-request-btn" style="background:rgb(7, 207, 0); border-color:rgb(7, 207, 0) ;">Ajouter</button>
             </div>
             </form>
           </div>

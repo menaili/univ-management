@@ -37,6 +37,7 @@ class RequestLevelController extends Controller
 
 
     public function deleteById($id){
+        DB::table('bachlor_status')->where('bachlor_status.request_bachlor_id',$id)->delete();
 
         DB::table('request_bachlor')->where('request_bachlor_id',$id)->delete();
         return back()->with('request_deleted', 'request deleted successfully!');

@@ -21,12 +21,20 @@ class DepartementController extends Controller
         DB::table('faculty')->insert([
 
             'faculty_code' => $request->faculty_name,
+            'faculty_code_ar' => $request->faculty_name_ar,
             'faculty_creation_date' => Carbon::now()->toDateTimeString(),
 
         ]);
-        return back()->with('faculty_added', 'faculty has been added successfully!');
+        return back()->with('faculty_added', 'la faculté a été ajoutée avec succès!');
     }
 
+
+    public function getAllFaculties(){
+        $faculties = DB::table('faculty')->get();
+
+
+        return view('admin.depertement.faculties',compact('faculties'));
+    }
 
 
 
@@ -51,11 +59,12 @@ class DepartementController extends Controller
         DB::table('domain')->insert([
 
             'domain_code' => $request->domain_name,
+            'domain_code_fr' => $request->domain_name_fr,
             'faculty_id' => $request->faculty,
             'domain_creation_date' => Carbon::now()->toDateTimeString(),
 
         ]);
-        return back()->with('domain_added', 'domain has been added successfully!');
+        return back()->with('domain_added', 'le domaine a été ajouté avec succès!');
     }
 
 
@@ -68,6 +77,16 @@ class DepartementController extends Controller
     }
 
 
+
+    public function getAllDomains(){
+        $domains = DB::table('domain')
+          ->join('faculty' , 'domain.faculty_id', '=','faculty.faculty_id')
+             ->select('faculty.*','domain.*')
+              ->get();
+
+
+        return view('admin.depertement.domain',compact('domains'));
+    }
 
 
 
@@ -86,11 +105,12 @@ class DepartementController extends Controller
         date_default_timezone_set('Africa/Algiers');
         DB::table('division')->insert([
             'domain_id' => $request->domain,
+            'division_code_fr' => $request->devision_name_fr,
             'division_code' => $request->devision_name,
             'division_creation_date' => Carbon::now()->toDateTimeString(),
 
         ]);
-        return back()->with('devision_added', 'devision has been added successfully!');
+        return back()->with('devision_added', 'filière a été ajouté avec succès!');
     }
 
 
@@ -106,6 +126,16 @@ class DepartementController extends Controller
 //        dd($id,DB::table('domain')->where('domain.faculty_id',$id)->toSql(),DB::table('domain')->where('domain.faculty_id',$id)->get());
         return DB::table('domain')->where('domain.faculty_id',$id)->get();
 
+    }
+
+    public function getAllDivision(){
+        $divisions = DB::table('division')
+            ->join('domain' , 'division.domain_id', '=','domain.domain_id')
+            ->select('division.*','domain.*')
+            ->get();
+
+
+        return view('admin.depertement.division',compact('divisions'));
     }
 
 
@@ -160,6 +190,15 @@ class DepartementController extends Controller
 
     }
 
+    public function getAllSpeciality(){
+        $specialities = DB::table('speciality')
+            ->join('division' , 'division.division_id', '=','speciality.division_id')
+            ->select('division.*','speciality.*')
+            ->get();
+
+
+        return view('admin.depertement.speciality',compact('specialities'));
+    }
 
 
 

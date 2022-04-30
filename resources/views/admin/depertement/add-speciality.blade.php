@@ -1,8 +1,8 @@
 @extends('master.master2')
 
-@section('title', 'add-speciality')
+@section('title', 'ajout-specialité')
 
-@section('title-page', 'add speciality')
+@section('title-page', 'ajouter specialité')
 
 
 @section('content')
@@ -14,7 +14,7 @@
             <div class="checkout-wrapper-area">
                 <div class="card">
                     <div class="card-body checkout-form">
-                        <h6 class="mb-3">Enter your informations</h6>
+                        <h6 class="mb-3">Entre votre informations</h6>
                         @if (Session::has('speciality_added'))
                             <div class="alert alert-success">
                                 {{Session::get('speciality_added')}}
@@ -25,7 +25,7 @@
                             @csrf
                             <div class="form-group">
                                 <select class="form-select mb-3 faculty" data-dependent="domain" id="faculty" name="faculty" aria-label="faculty">
-                                    <option value="0" selected>Faculty</option>
+                                    <option value="0" selected>Faculté</option>
 
                                     @foreach($faculties as $key => $faculty)
                                         <option value="{{$faculty->faculty_id}}" >{{$faculty->faculty_code }}</option>
@@ -34,19 +34,24 @@
                             </div>
                             <div class="form-group">
                                 <select class="form-select mb-3 domain_cc" id="damain" name="domain" aria-label="damain">
-                                    <option value="0" selected>Domain</option>
+                                    <option value="0" selected>Domaine</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <select class="form-select mb-3 devision_cc" id="devision" name="devision" aria-label="devision">
-                                    <option value="0" selected>Devision</option>
+                                    <option value="0" selected>Filière</option>
                                 </select>
                             </div>
                             {{ csrf_field() }}
                             <div>
                                 <div class="form-group">
-                                    <input class="form-control mb-3" type="text" id="speciality_name" name="speciality_name" placeholder="Speciality name">
+                                    <input class="form-control mb-3" type="text" id="speciality_name_fr" name="speciality_name_fr" placeholder="Nom de Specialité">
                                 </div>
+
+                                <div class="form-group">
+                                    <input class="form-control mb-3" type="text" id="speciality_name" name="speciality_name" placeholder="Nom de Specialité en arabe">
+                                </div>
+
 
                                 <button class="btn btn-danger mt-3 w-100" id="send-request-btn" style="background:rgb(7, 207, 0); border-color:rgb(7, 207, 0) ;">Send Request</button>
                             </div>

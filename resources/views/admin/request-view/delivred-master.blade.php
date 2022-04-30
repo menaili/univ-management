@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
+   
 
     <style>
         button{
@@ -91,9 +91,9 @@
   position: relative;
   left: 297mm;
   top:10cm;
-  "> {{$request->bachlor_student_first_name}} {{$request->bachlor_student_last_name}}</h3>
+  "> {{$request->master_student_first_name}} {{$request->master_student_last_name}}</h3>
         <h3></h3>
-        <h3>{{$request->bachlor_student_birthday}}</h3>
+        <h3>{{$request->master_student_birthday}}</h3>
     @endforeach
 </div>
 

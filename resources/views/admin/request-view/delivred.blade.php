@@ -8,6 +8,7 @@
     <title>Document</title>
 
 
+
     <style>
         button{
             border: none;
@@ -89,11 +90,45 @@
     @foreach($requests as $key => $request)
 <h3 style="
   position: relative;
-  left: 297mm;
-  top:10cm;
+  left: 24cm;
+  top:8cm;
   "> {{$request->bachlor_student_first_name}} {{$request->bachlor_student_last_name}}</h3>
-<h3></h3>
-<h3>{{$request->bachlor_student_birthday}}</h3>
+
+<h3 style="
+  position: relative;
+  left: 10cm;
+  top:7cm;
+  ">{{$request->bachlor_student_birthday}}</h3>
+
+<h3 style="
+  position: relative;
+  left: 10cm;
+  top:7cm;
+  ">{{$request->faculty_code}}</h3>
+
+<h3 style="
+  position: relative;
+  left: 24cm;
+  top:6cm;
+  ">{{$request->faculty_code_ar}}</h3>
+
+<h3 style="
+  position: relative;
+  left: 24cm;
+  top:7cm;
+  ">{{$request->domain_code}}</h3>
+
+<h3 style="
+  position: relative;
+  left: 24cm;
+  top:7cm;
+  ">{{$request->division_code}}</h3>
+
+<h3 style="
+  position: relative;
+  left: 24cm;
+  top:7cm;
+  ">{{$request->speciality_code}}</h3>
     @endforeach
 </div>
 

@@ -7,7 +7,6 @@ use App\Http\Controllers\SendRequestController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\RequestLevelController;
 use App\Http\Controllers\RequestStatusController;
-;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -152,6 +151,8 @@ Route::get('/Add-faculty', [DepartementController::class, 'index'])->name('Add-f
 
 Route::post('/Add-faculty-sub', [DepartementController::class, 'addFaculty'])->name('faculty.sub');
 
+Route::get('/getFaculties', [DepartementController::class, 'getAllFaculties'])->name('faculty.index');
+
 //------------DOMAIN---------------------------------------------------------------------------------------------
 
 Route::get('/Add-domain', [DepartementController::class, 'domain'])->name('Add-domain.index');
@@ -159,6 +160,8 @@ Route::get('/Add-domain', [DepartementController::class, 'domain'])->name('Add-d
 Route::post('/Add-domain-sub', [DepartementController::class, 'addDomain'])->name('domain.sub');
 
 Route::get('/Add-domain', [DepartementController::class, 'getFacultyOfDomain'])->name('get.faculty.domain');
+
+Route::get('/getDomainss', [DepartementController::class, 'getAllDomains'])->name('domain.index');
 
 //------------DEVISION---------------------------------------------------------------------------------------------
 
@@ -170,6 +173,8 @@ Route::get('/Add-devision', [DepartementController::class, 'getFacultyOfDevision
 
 Route::get('/getDomainOfDevision/{id}', [DepartementController::class, 'getDomainOfDevision'])->name('get.domain.devision');
 
+Route::get('/getDivisions', [DepartementController::class, 'getAllDivision'])->name('division.index');
+
 //------------SPECIALITY---------------------------------------------------------------------------------------------
 
 Route::post('/Add-speciality-sub', [DepartementController::class, 'addSpeciality'])->name('speciality.sub');
@@ -179,6 +184,8 @@ Route::get('/Add-speciality', [DepartementController::class, 'getFacultyOfSpecia
 Route::get('/getDomainOfSpeciality/{id}', [DepartementController::class, 'getDomainOfSpeciality'])->name('get.domain.Speciality');
 
 Route::get('/getDevisionOfSpeciality/{id}', [DepartementController::class, 'getDevisionOfSpeciality'])->name('get.devision.Speciality');
+
+Route::get('/getSpecialities', [DepartementController::class, 'getAllSpeciality'])->name('speciality.index');
 
 
 

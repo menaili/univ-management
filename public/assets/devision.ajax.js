@@ -13,6 +13,8 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
                 },
                 success: function(reponse){
+
+                    alert(id);
                     console.log(reponse);
                     // var x = JSON.parse(reponse);
                     var h ='<option value="0" disabled selected>Domain</option>';
@@ -23,9 +25,12 @@
                         // $('.domain_cc').append(`<option value="${element['domain_id']}">${element['domain_code']}</option>`)
 
                     });
-                    $(".domain_cc").html(h);
-                }
 
+                    $(".domain_cc").html(h);
+                },
+                error: function (error){
+                    console.log(error);
+                }
             });
 
         });
