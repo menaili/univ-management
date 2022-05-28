@@ -14,89 +14,130 @@
       <div class="checkout-wrapper-area">
         <div class="card">
           <div class="card-body checkout-form">
-            <h6 class="mb-3">Enter your informations</h6>
-            @if (Session::has('request_sent'))
-            <div class="alert alert-success">
-              {{Session::get('request_sent')}}
-            </div>
+              <h6 class="mb-3">Entre votre informations</h6>
+              @if (Session::has('request_sent'))
+                  <div class="alert alert-success">
+                      {{Session::get('request_sent')}}
+                  </div>
 
-            @endif
-            <form  action="{{ route('request.sub')}}" method="POST">
-              @csrf
-            <div>
-              <div class="form-group">
-                <input class="form-control mb-3" type="text" id="firstname" name="firstname" placeholder="Your first name">
-              </div>
-              <div class="form-group">
-                <input class="form-control mb-3" type="text" id="lastname" name="lastname" placeholder="Your las name">
-              </div>
-              Your Birthday:
-              <div class="form-group">
-                <input class="form-control mb-3" type="date" id="dateOfBirth" name="dateOfBirth" placeholder="Birthday">
-              </div>
+              @endif
 
-              <div class="form-group">
-                <input class="form-control mb-3" type="text" id="diplomanumber" name="diplomanumber" placeholder="diploma number">
-              </div>
-              date of diploma:
-              <div class="form-group">
-                <input class="form-control mb-3" type="date" id="dateOfDiploma" name="dateOfDiploma" placeholder="date of diploma">
-              </div>
+              {{--                        @if (Session::has('request_error'))--}}
+              {{--                            <div class="alert alert-success">--}}
+              {{--                                {{Session::get('request_error')}}--}}
+              {{--                            </div>--}}
+
+              {{--                        @endif--}}
+              <form  action="{{ route('request.sub')}}" method="POST">
+                  @csrf
+                  <div>
+                      <div class="form-group">
+                          <input class="form-control mb-3" type="text" id="firstname" name="firstname" placeholder="Nom">
+                          @error("firstname")
+                          <small class=" form-text text-danger">{{$message}}</small>
+                          @enderror
+                      </div>
+
+                      <div class="form-group">
+                          <input class="form-control mb-3" type="text" id="lastname" name="lastname" placeholder="Prénom">
+                          @error("lastname")
+                          <small class=" form-text text-danger">{{$message}}</small>
+                          @enderror
+                      </div>
+                      <div class="form-group">
+                          <input class="form-control mb-3" type="text" id="firstname_ar" name="firstname_ar" placeholder="Nom en arabe">
+                          @error("firstname_ar")
+                          <small class=" form-text text-danger">{{$message}}</small>
+                          @enderror
+                      </div>
+                      <div class="form-group">
+                          <input class="form-control mb-3" type="text" id="lastname_ar" name="lastname_ar" placeholder="Prénom en arabe">
+                          @error("lastname_ar")
+                          <small class=" form-text text-danger">{{$message}}</small>
+                          @enderror
+                      </div>
+                      Date de naissance:
+                      <div class="form-group">
+                          <input class="form-control mb-3" type="date" id="dateOfBirth" name="dateOfBirth" placeholder="Date de naissance">
+                          @error("dateOfBirth")
+                          <small class=" form-text text-danger">{{$message}}</small>
+                          @enderror
+                      </div>
+
+                      <div class="form-group">
+                          <input class="form-control mb-3" type="text" id="diplomanumber" name="diplomanumber" placeholder="Numero de diplome">
+                          @error("diplomanumber")
+                          <small class=" form-text text-danger">{{$message}}</small>
+                          @enderror
+                      </div>
+                      Date de diplome:
+                      <div class="form-group">
+                          <input class="form-control mb-3" type="date" id="dateOfDiploma" name="dateOfDiploma" placeholder="Date de diplome">
+                          @error("dateOfDiploma")
+                          <small class=" form-text text-danger">{{$message}}</small>
+                          @enderror
+                      </div>
+
+
+                      Faculté:
+                      <div class="form-group">
+                          <select class="form-select mb-3" id="faculty" name="faculty" aria-label="Faculté">
+                              <option value="0" selected>Faculté</option>
+                              @foreach($faculties as $key => $faculty)
+                                  <option value="{{$faculty->faculty_id}}" >{{$faculty->faculty_code }}</option>
+                              @endforeach
+                          </select>
+                          @error("faculty")
+                          <small class=" form-text text-danger">{{$message}}</small>
+                          @enderror
+                      </div>
 
 
 
-              <div class="form-group">
-                <select class="form-select mb-3" id="faculty" name="faculty" aria-label="faculty">
-                    @foreach($faculties as $key => $faculty)
-                  <option value="{{$faculty->faculty_id}}" selected>{{$faculty->faculty_code }}</option>
-                    @endforeach
-                </select>
-              </div>
 
 
+                      <!--
+                      <div class="form-group">
+                        <select class="form-select mb-3" id="speciality" name="speciality" aria-label="speciality">
+                          <option value="1" selected>Your Speciality</option>
+                          <option value="2">Dhaka</option>
+                          <option value="3">Barishal</option>
+                          <option value="3">Khulna</option>
+                        </select>
+                      </div>
+                      -->
 
-              <!--
-              <div class="form-group">
-                <select class="form-select mb-3" id="speciality" name="speciality" aria-label="speciality">
-                  <option value="1" selected>Your Speciality</option>
-                  <option value="2">Dhaka</option>
-                  <option value="3">Barishal</option>
-                  <option value="3">Khulna</option>
-                </select>
-              </div>
-              -->
-
-             <!--
-              <div class="form-group">
-                <input class="form-control mb-3" type="text" id="Bdiplome" placeholder="Bachelors Degree">
-              </div>
-              <div class="form-group">
-                <input class="form-control mb-3" type="text" id="Mdiplome" placeholder="Master's degree">
-              </div>
-              <div class="form-group">
-                <input class="form-control mb-3" type="text" id="Scard" placeholder="student card">
-              </div>-->
-              <div class="form-group">
-                <textarea class="form-control mb-3" id="note" name="note" cols="30" rows="10" placeholder="Notes"></textarea>
-              </div>
-              <!--
-              <div class="form-check mb-2">
-                <input class="form-check-input" type="checkbox" name="exampleRadio" id="darkRadio1" checked>
-                <label class="form-check-label" for="darkRadio1">Regular Courier $0.49</label>
-              </div>
-              <div class="form-check mb-2">
-                <input class="form-check-input" type="checkbox" name="exampleRadio" id="darkRadio2">
-                <label class="form-check-label" for="darkRadio2">Free Shipping $0</label>
-              </div>
-            -->
-              <button class="btn btn-danger mt-3 w-100" id="send-request-btn" style="background:rgb(7, 207, 0); border-color:rgb(7, 207, 0) ;">Send Request</button>
-            </div>
-            </form>
+                      <!--
+                       <div class="form-group">
+                         <input class="form-control mb-3" type="text" id="Bdiplome" placeholder="Bachelors Degree">
+                       </div>
+                       <div class="form-group">
+                         <input class="form-control mb-3" type="text" id="Mdiplome" placeholder="Master's degree">
+                       </div>
+                       <div class="form-group">
+                         <input class="form-control mb-3" type="text" id="Scard" placeholder="student card">
+                       </div>-->
+                      <div class="form-group">
+                          <textarea class="form-control mb-3" id="note" name="note" cols="30" rows="10" placeholder="Observation"></textarea>
+                      </div>
+                      <!--
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" name="exampleRadio" id="darkRadio1" checked>
+                        <label class="form-check-label" for="darkRadio1">Regular Courier $0.49</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" name="exampleRadio" id="darkRadio2">
+                        <label class="form-check-label" for="darkRadio2">Free Shipping $0</label>
+                      </div>
+                    -->
+                      <button class="btn btn-danger mt-3 w-100" id="send-request-btn" style="background:rgb(7, 207, 0); border-color:rgb(7, 207, 0) ;">Demande</button>
+                  </div>
+              </form>
           </div>
         </div>
       </div>
     </div>
-  </div>
+</div>
   <!-- Footer Nav -->
   <div class="footer-nav-area" id="footerNav">
     <div class="container px-0">

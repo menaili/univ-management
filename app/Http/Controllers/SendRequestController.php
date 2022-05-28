@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Validator;
 
 
 class SendRequestController extends Controller
@@ -21,6 +21,22 @@ class SendRequestController extends Controller
     // }
 
     public function addRequest(Request $request){
+
+        $validated = Validator::make($request->all(),
+            [
+                'firstname' => 'required|regex:/^[a-zA-Z\s]*$/|min:3|max:255',
+                'lastname' => 'required|regex:/^[a-zA-Z\s]*$/|min:3|max:255',
+                'firstname_ar' => 'required|regex:/^[\p{Arabic}a-zA-Z\p{N}]+\h?[\p{N}\p{Arabic}a-zA-Z]*$/u|min:3|max:255',
+                'lastname_ar' => 'required|regex:/^[\p{Arabic}a-zA-Z\p{N}]+\h?[\p{N}\p{Arabic}a-zA-Z]*$/u|min:3|max:255',
+                'dateOfBirth' => ['before:18 years ago'],
+                'diplomanumber' => 'required|unique:request_bachlor,bachlor_diploma_number|numeric',
+                'faculty' => 'required',
+
+
+            ]);
+        if($validated -> fails()){
+            return redirect()->back()->withErrors($validated)->withInput($request->all());
+        }
 //        $request -> all();
 //        DB::table('requests')->insert($request -> all());
         date_default_timezone_set('Africa/Algiers');
@@ -93,13 +109,32 @@ class SendRequestController extends Controller
     // }
 
     public function addRequestLicence(Request $request){
-//        $request -> all();
-//        DB::table('requests')->insert($request -> all());
+
+        $validated = Validator::make($request->all(),
+        [
+            'firstname' => 'required|regex:/^[a-zA-Z\s]*$/|min:3|max:255',
+            'lastname' => 'required|regex:/^[a-zA-Z\s]*$/|min:3|max:255',
+            'firstname_ar' => 'required|regex:/^[\p{Arabic}a-zA-Z\p{N}]+\h?[\p{N}\p{Arabic}a-zA-Z]*$/u|min:3|max:255',
+            'lastname_ar' => 'required|regex:/^[\p{Arabic}a-zA-Z\p{N}]+\h?[\p{N}\p{Arabic}a-zA-Z]*$/u|min:3|max:255',
+            'dateOfBirth' => ['before:19 years ago'],
+            'diplomanumber' => 'required|unique:request_veterinary,veterinary_diploma_number|numeric',
+            'faculty' => 'required',
+            'domain' => 'required',
+            'devision' => 'required',
+            'speciality' => 'required',
+
+        ]);
+        if($validated -> fails()){
+           return redirect()->back()->withErrors($validated)->withInput($request->all());
+        }
+
         date_default_timezone_set('Africa/Algiers');
         DB::table('request_bachlor')->insert([
 
             'bachlor_student_first_name' => $request->firstname,
             'bachlor_student_last_name' => $request->lastname,
+            'bachlor_student_first_name_ar' => $request->firstname_ar,
+            'bachlor_student_last_name_ar' => $request->lastname_ar,
             'bachlor_student_birthday' => $request->dateOfBirth,
             'bachlor_diploma_number' => $request->diplomanumber,
             'bachlor_diploma_date' => $request->dateOfDiploma,
@@ -111,6 +146,14 @@ class SendRequestController extends Controller
 
 
         ]);
+
+//        date_default_timezone_set('Africa/Algiers');
+//        DB::table('bachlor_status')->insert([
+//            'request_bachlor_id' => $id,
+//            'bachlor_status_date' => Carbon::now()->toDateTimeString(),
+//            'bachlor_status_code' => 'Demandé',
+//
+//        ]);
         return back()->with('request_sent', 'request sent successfully!');
     }
 
@@ -202,6 +245,26 @@ class SendRequestController extends Controller
 
 
     public function addRequestMaster(Request $request){
+
+        $validated = Validator::make($request->all(),
+            [
+                'firstname' => 'required|regex:/^[a-zA-Z\s]*$/|min:3|max:255',
+                'lastname' => 'required|regex:/^[a-zA-Z\s]*$/|min:3|max:255',
+                'firstname_ar' => 'required|regex:/^[\p{Arabic}a-zA-Z\p{N}]+\h?[\p{N}\p{Arabic}a-zA-Z]*$/u|min:3|max:255',
+                'lastname_ar' => 'required|regex:/^[\p{Arabic}a-zA-Z\p{N}]+\h?[\p{N}\p{Arabic}a-zA-Z]*$/u|min:3|max:255',
+                'dateOfBirth' => ['before:18 years ago'],
+                'diplomanumber' => 'required|unique:request_master,master_diploma_number|numeric',
+                'faculty' => 'required',
+                'domain' => 'required',
+                'devision' => 'required',
+                'speciality' => 'required',
+
+            ]);
+        if($validated -> fails()){
+            return redirect()->back()->withErrors($validated)->withInput($request->all());
+        }
+
+
 //        $request -> all();
 //        DB::table('requests')->insert($request -> all());
         date_default_timezone_set('Africa/Algiers');

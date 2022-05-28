@@ -7,6 +7,7 @@ use App\Http\Controllers\SendRequestController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\RequestLevelController;
 use App\Http\Controllers\RequestStatusController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,10 +20,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/post/create', [PostController::class, 'create']);
+Route::post('/post', [PostController::class, 'store']);
+
+
 
 Route::get('/', function () {
     return view('welcome');
 })->name("home");
+
+Route::get('/diplomes-home', function () {
+    return view('admin.home_admin.home');
+})->name("home2");
 
 Route::get('/about-me',function () {
 
@@ -89,6 +98,10 @@ Route::get('/Requests-delete/{id}', [RequestLevelController::class, 'deleteById'
 Route::get('/Request-bachlor-status', [RequestStatusController::class, 'getAllRequestsStatusBachlor'])->name('get.request.bachlor');
 
 Route::get('/Status-update-bachlor/{id}', [RequestStatusController::class, 'changeStatusBachlor'])->name('update.status.bachlor');
+
+Route::get('/Status-update-bachlor-valider/{id}', [\App\Http\Controllers\StatusValiderController::class, 'changeStatusValidate'])->name('valider.status.bachlor');
+
+Route::get('/Status-view-bachlor/{id}', [\App\Http\Controllers\ViewStatusController::class, 'ViewStatus'])->name('view.status.bachlor');
 
 
 //-----------------------------Master------------------------------------------------------------
@@ -192,7 +205,7 @@ Route::get('/getSpecialities', [DepartementController::class, 'getAllSpeciality'
 
 Route::get('/getPDF', [\App\Http\Controllers\PrintController::class, 'getPDF'])->name('get.pdf');
 
-Route::get('/printPDF', [\App\Http\Controllers\PrintController::class, 'printPDF'])->name('print.pdf');
+Route::get('/printPDF/{id}', [\App\Http\Controllers\PrintController::class, 'printPDF'])->name('print.pdf');
 
 
 

@@ -20,25 +20,33 @@
                             {{Session::get('status_updated')}}
                         </div>
                     @endif
-                    @if (Session::has('status_not_updated'))
+                    @if (Session::has('status_updated_not'))
                         <div class="alert alert-danger">
-                            {{Session::get('status_not_updated')}}
+                            {{Session::get('status_updated_not')}}
                         </div>
                     @endif
+
+                        @if (Session::has('status_valider'))
+                            <div class="alert alert-success">
+                                {{Session::get('status_valider')}}
+                            </div>
+                        @endif
+
 
                     <table class="data-table w-100" id="dataTable">
                         <thead>
                         <tr>
                             <th scope="col">view</th>
 
-                            <th scope="col">First name</th>
-                            <th scope="col">Last name</th>
-                            <th scope="col">Birthday</th>
-                            <th scope="col">Faculty</th>
-                            <th scope="col">Date of Request</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Date de naissance</th>
+                            <th scope="col">Specialité</th>
+                            <th scope="col">Date de la demande</th>
                             <th scope="col">Status</th>
 
                             <th scope="col">Step</th>
+
 
 
                         </tr>
@@ -50,7 +58,7 @@
                             <tr>
 
                                 <td>
-                                    <a href="#" id="btn-view" >view</a>
+                                    <a href="/univ-certaficate-management/public/Status-view-bachlor/{{$request->request_bachlor_id}}" id="btn-view" >view</a>
                                 </td>
 
                                 <td>
@@ -66,12 +74,13 @@
                                 </td>
 
                                 <td>
-                                    {{$request->faculty_id}}
+                                    {{$request->speciality_code_fr}}
                                 </td>
 
 
                                 <td>
                                     {{$request->bachlor_status_date}}
+
                                 </td>
 
                                 <td>
@@ -81,7 +90,8 @@
                                 <td id="btn-next">
 
 
-                                    <div class="direction-rtl"><a class="btn m-1 btn-outline-primary" id="btn-step" href="/univ-certaficate-management/public/Status-update-bachlor/{{$request->request_bachlor_id}}">Next step</a></div>
+                                    <div class="direction-rtl"><a class="btn m-1 btn-outline-primary" id="btn-step" href="/univ-certaficate-management/public/Status-update-bachlor/{{$request->request_bachlor_id}}">suivant</a></div>
+                                    <div class="direction-rtl"><a class="btn m-1 btn-outline-primary" id="btn-step" href="/univ-certaficate-management/public/Status-update-bachlor-valider/{{$request->request_bachlor_id}}">valider</a></div>
 
                                 </td>
                             </tr>

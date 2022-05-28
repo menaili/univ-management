@@ -3,8 +3,6 @@
 return [
     'mode'                       => '',
     'format'                     => 'A4',
-    'width'                      => '297mm',
-    'height'                      => '210mm',
     'default_font_size'          => '12',
     'default_font'               => 'sans-serif',
     'margin_left'                => 10,
@@ -13,7 +11,7 @@ return [
     'margin_bottom'              => 10,
     'margin_header'              => 0,
     'margin_footer'              => 0,
-    'orientation'                => 'P',
+    'orientation'                => 'L',
     'title'                      => 'Laravel mPDF',
     'author'                     => '',
     'watermark'                  => '',

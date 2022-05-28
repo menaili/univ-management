@@ -48,18 +48,18 @@
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
                               <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
                               <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-                          </svg>Home</a>
+                          </svg>accueil</a>
                   </li>
 
                   <li class="affan-dropdown-menu"><a href="#">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-plus" viewBox="0 0 16 16">
                               <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855a.75.75 0 0 0-.124 1.329l4.995 3.178 1.531 2.406a.5.5 0 0 0 .844-.536L6.637 10.07l7.494-7.494-1.895 4.738a.5.5 0 1 0 .928.372l2.8-7Zm-2.54 1.183L5.93 9.363 1.591 6.602l11.833-4.733Z"/>
                               <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-3.5-2a.5.5 0 0 0-.5.5v1h-1a.5.5 0 0 0 0 1h1v1a.5.5 0 0 0 1 0v-1h1a.5.5 0 0 0 0-1h-1v-1a.5.5 0 0 0-.5-.5Z"/>
-                          </svg>Add Requests</a>
+                          </svg>Ajouter une demande</a>
                       <ul>
-                          <li><a href="/univ-certaficate-management/public/Send-request-licence">Send Requests Licence</a></li>
-                          <li><a href="/univ-certaficate-management/public/Send-request-master">Send Requests Master</a></li>
-                          <li><a href="/univ-certaficate-management/public/Send-request">Send Requests Veterinary</a></li>
+                          <li><a href="/univ-certaficate-management/public/Send-request-licence">ajouter une demande Licence</a></li>
+                          <li><a href="/univ-certaficate-management/public/Send-request-master">ajouter une demande Master</a></li>
+                          <li><a href="/univ-certaficate-management/public/Send-request">ajouter une demande Veterinaire</a></li>
 
                       </ul>
                   </li>
@@ -68,11 +68,11 @@
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
                               <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
                               <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
-                          </svg>Requests</a>
+                          </svg>Les demandes</a>
                       <ul>
-                          <li><a href="/univ-certaficate-management/public/Request-licence">Requests Licence</a></li>
-                          <li><a href="/univ-certaficate-management/public/Request-master">Requests Master</a></li>
-                          <li><a href="/univ-certaficate-management/public/Request-veterinary">Requests Veterinary</a></li>
+                          <li><a href="/univ-certaficate-management/public/Request-licence">demandes Licence</a></li>
+                          <li><a href="/univ-certaficate-management/public/Request-master">demandes Master</a></li>
+                          <li><a href="/univ-certaficate-management/public/Request-veterinary">demandes Veterinaire</a></li>
 
                       </ul>
                   </li>
@@ -81,27 +81,16 @@
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
                               <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
                               <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
-                          </svg>Requests status</a>
+                          </svg>demande status</a>
                       <ul>
-                          <li><a href="/univ-certaficate-management/public/Request-bachlor-status">Requests status Licence</a></li>
-                          <li><a href="/univ-certaficate-management/public/Request-master-status">Requests status Master</a></li>
-                          <li><a href="/univ-certaficate-management/public/Request-veterinary-status">Requests status Veterinary</a></li>
+                          <li><a href="/univ-certaficate-management/public/Request-bachlor-status">demande status Licence</a></li>
+                          <li><a href="/univ-certaficate-management/public/Request-master-status">demande status Master</a></li>
+                          <li><a href="/univ-certaficate-management/public/Request-veterinary-status">demande status Veterinaire</a></li>
 
                       </ul>
                   </li>
 
-                  <li class="affan-dropdown-menu"><a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
-                              <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-                              <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
-                          </svg>Print certificat</a>
-                      <ul>
-                          <li><a href="/univ-certaficate-management/public/Request-bachlor-status">Licence</a></li>
-                          <li><a href="/univ-certaficate-management/public/Request-master-status">Master</a></li>
-                          <li><a href="/univ-certaficate-management/public/Request-veterinary-status">Veterinary</a></li>
 
-                      </ul>
-                  </li>
 
                   <li>
                       <div class="night-mode-nav">

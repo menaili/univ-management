@@ -5,13 +5,13 @@ $(document).ready(function () {
         let id=$(this).val();
         $('#domain').empty();
         $('#domain').append('<option value="0" disabled selected>Domain</option>')
-
         $.ajax({
             type:'GET',
             url: "http://localhost/univ-certaficate-management/public/getDomainOfBachlor/"+ id,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
             },
+
             success: function(reponse){
                 console.log(reponse);
                 // var x = JSON.parse(reponse);
@@ -69,7 +69,7 @@ $(document).ready(function () {
         let idb=$(this).val();
         $('#speciality').empty();
         $('#speciality').append('<option value="0" disabled selected>Speciality</option>')
-        alert(idb)
+
         $.ajax({
             type:'GET',
             url: "http://localhost/univ-certaficate-management/public/getSpecialityOfBachlor/"+ idb,

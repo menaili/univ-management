@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class DepartementController extends Controller
 {
@@ -15,6 +16,18 @@ class DepartementController extends Controller
     }
 
     public function addFaculty(Request $request){
+
+        $validated = Validator::make($request->all(),
+            [
+                'faculty_name' => 'required|regex:/^[a-zA-Z\s]*$/|min:3|max:255',
+                'faculty_name_ar' => 'required|regex:/^[\p{Arabic}a-zA-Z\p{N}]+\h?[\p{N}\p{Arabic}a-zA-Z]*$/u|min:3|max:255',
+
+            ]);
+        if($validated -> fails()){
+            return redirect()->back()->withErrors($validated)->withInput($request->all());
+        }
+
+
 //        $request -> all();
 //        DB::table('requests')->insert($request -> all());
         date_default_timezone_set('Africa/Algiers');
@@ -53,6 +66,18 @@ class DepartementController extends Controller
     }
 
     public function addDomain(Request $request){
+
+        $validated = Validator::make($request->all(),
+            [
+                'domain_name_fr' => 'required|regex:/^[a-zA-Z\s]*$/|min:3|max:255',
+                'domain_name' => 'required|regex:/^[\p{Arabic}a-zA-Z\p{N}]+\h?[\p{N}\p{Arabic}a-zA-Z]*$/u|min:3|max:255',
+                'faculty' => 'required',
+
+            ]);
+        if($validated -> fails()){
+            return redirect()->back()->withErrors($validated)->withInput($request->all());
+        }
+
 //        $request -> all();
 //        DB::table('requests')->insert($request -> all());
         date_default_timezone_set('Africa/Algiers');
@@ -100,6 +125,18 @@ class DepartementController extends Controller
     }
 
     public function addDevision(Request $request){
+
+        $validated = Validator::make($request->all(),
+            [
+                'devision_name_fr' => 'required|regex:/^[a-zA-Z\s]*$/|min:3|max:255',
+                'devision_name' => 'required|regex:/^[\p{Arabic}a-zA-Z\p{N}]+\h?[\p{N}\p{Arabic}a-zA-Z]*$/u|min:3|max:255',
+                'domain' => 'required',
+
+            ]);
+        if($validated -> fails()){
+            return redirect()->back()->withErrors($validated)->withInput($request->all());
+        }
+
 //        $request -> all();
 //        DB::table('requests')->insert($request -> all());
         date_default_timezone_set('Africa/Algiers');
@@ -155,6 +192,18 @@ class DepartementController extends Controller
     }
 
     public function addSpeciality(Request $request){
+
+        $validated = Validator::make($request->all(),
+            [
+//                'devision_name_fr' => 'required|regex:/^[a-zA-Z\s]*$/|min:3|max:255',
+                'speciality_name' => 'required|regex:/^[\p{Arabic}a-zA-Z\p{N}]+\h?[\p{N}\p{Arabic}a-zA-Z]*$/u|min:3|max:255',
+                'devision' => 'required',
+
+            ]);
+        if($validated -> fails()){
+            return redirect()->back()->withErrors($validated)->withInput($request->all());
+        }
+
 //        $request -> all();
 //        DB::table('requests')->insert($request -> all());
         date_default_timezone_set('Africa/Algiers');

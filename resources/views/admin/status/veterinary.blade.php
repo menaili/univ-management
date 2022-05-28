@@ -31,11 +31,11 @@
                         <tr>
                             <th scope="col">view</th>
 
-                            <th scope="col">First name</th>
-                            <th scope="col">Last name</th>
-                            <th scope="col">Birthday</th>
-                            <th scope="col">Faculty</th>
-                            <th scope="col">Date of Request</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Date de naissance</th>
+                            <th scope="col">Faculté</th>
+                            <th scope="col">Date de la demande</th>
                             <th scope="col">Status</th>
 
                             <th scope="col">Step</th>

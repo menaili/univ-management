@@ -12,7 +12,7 @@ return array(
     |
     */
     'show_warnings' => false,   // Throw an Exception on warnings from dompdf
-    'orientation' => 'portrait',
+    'orientation' => 'landscape',
     /*
      * Dejavu Sans font is missing glyphs for converted entities, turn it off if you need to show € and £.
      */
@@ -80,7 +80,7 @@ return array(
         /**
          * Whether to enable font subsetting or not.
          */
-        "enable_font_subsetting" => false,
+        "enable_font_subsetting" => true,
 
         /**
          * The PDF rendering backend to use
@@ -153,7 +153,7 @@ return array(
          * Used if no suitable fonts can be found. This must exist in the font folder.
          * @var string
          */
-        "default_font" => "serif",
+        "default_font" => "aealarabiya",
 
         /**
          * Image DPI setting

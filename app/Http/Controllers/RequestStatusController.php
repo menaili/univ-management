@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use PDF;
+use PDFC;
+use PhpOffice\PhpWord\IOFactory;
+use PhpOffice\PhpWord\Settings;
+use PhpOffice\PhpWord\TemplateProcessor;
+use Response;
+
+
+
 
 class RequestStatusController extends Controller
 {
@@ -141,12 +149,15 @@ class RequestStatusController extends Controller
 
 
     public function getAllRequestsStatusBachlor(){
-        $requests = DB::table('request_bachlor')->get();
+        $requests = DB::table('request_bachlor')
 
-//        $faculty = DB::table('faculty')
-//            ->join('requests','faculty.faculty_id','=','request_veterinary.faculty_id')
-//            ->select('faculty.faculty_code')
-//            ->get();
+            ->join('faculty', 'request_bachlor.faculty_id', '=', 'faculty.faculty_id')
+            ->join('domain', 'domain.domain_id', '=', 'request_bachlor.bachlor_domain')
+            ->join('division', 'division.division_id', '=', 'request_bachlor.bachlor_division')
+            ->join('speciality', 'speciality.speciality_id', '=', 'request_bachlor.bachlor_speciality')
+
+            ->select('request_bachlor.*','faculty.*','domain.*','division.*','speciality.*')
+            ->get();
 
 
 
@@ -157,8 +168,9 @@ class RequestStatusController extends Controller
     public function changeStatusBachlor($id){
 
         $req = DB::table('request_bachlor')->where('request_bachlor_id',$id)->first();
+        $reqs = DB::table('bachlor_status')->where('bachlor_status.request_bachlor_id',$id)->first();
 
-        if ($req->bachlor_status == 'Demandé'){
+        if ($req->bachlor_status == 'Demandé' ){
 
             DB::table('request_bachlor')->where('request_bachlor_id',$id)->update([
                 'bachlor_status' => 'Consulté',
@@ -174,10 +186,14 @@ class RequestStatusController extends Controller
 
             return back()->with('status_updated', 'status updated successfully!');
         }
-        if ($req->bachlor_status == 'Consulté'){
+        elseif ($req->bachlor_status == 'Consulté' && $reqs->bachlor_status_valider == 'valider'){
 
             DB::table('request_bachlor')->where('request_bachlor_id',$id)->update([
                 'bachlor_status' => 'Signature doyen',
+            ]);
+
+            DB::table('bachlor_status')->where('bachlor_status.request_bachlor_id',$id)->update([
+                'bachlor_status_valider' => '',
             ]);
 
             date_default_timezone_set('Africa/Algiers');
@@ -189,11 +205,18 @@ class RequestStatusController extends Controller
             ]);
 
             return back()->with('status_updated', 'status updated successfully!');
+
+
         }
-        if ($req->bachlor_status == 'Signature doyen'){
+
+        elseif ($req->bachlor_status == 'Signature doyen' && $reqs->bachlor_status_valider == 'valider'){
 
             DB::table('request_bachlor')->where('request_bachlor_id',$id)->update([
                 'bachlor_status' => 'Signature directeur',
+            ]);
+
+            DB::table('bachlor_status')->where('bachlor_status.request_bachlor_id',$id)->update([
+                'bachlor_status_valider' => '',
             ]);
 
             date_default_timezone_set('Africa/Algiers');
@@ -207,10 +230,15 @@ class RequestStatusController extends Controller
             return back()->with('status_updated', 'status updated successfully!');
         }
 
-        if ($req->bachlor_status == 'Signature directeur'){
+
+        elseif ($req->bachlor_status == 'Signature directeur' && $reqs->bachlor_status_valider == 'valider'){
 
             DB::table('request_bachlor')->where('request_bachlor_id',$id)->update([
                 'bachlor_status' => 'Enregistrement',
+            ]);
+
+            DB::table('bachlor_status')->where('bachlor_status.request_bachlor_id',$id)->update([
+                'bachlor_status_valider' => '',
             ]);
 
             date_default_timezone_set('Africa/Algiers');
@@ -224,10 +252,15 @@ class RequestStatusController extends Controller
             return back()->with('status_updated', 'status updated successfully!');
         }
 
-        if ($req->bachlor_status == 'Enregistrement'){
+
+        elseif ($req->bachlor_status == 'Enregistrement' && $reqs->bachlor_status_valider == 'valider'){
 
             DB::table('request_bachlor')->where('request_bachlor_id',$id)->update([
                 'bachlor_status' => 'Validé',
+            ]);
+
+            DB::table('bachlor_status')->where('bachlor_status.request_bachlor_id',$id)->update([
+                'bachlor_status_valider' => '',
             ]);
 
             date_default_timezone_set('Africa/Algiers');
@@ -240,23 +273,86 @@ class RequestStatusController extends Controller
 
             return back()->with('status_updated', 'status updated successfully!');
         }
-        if ($req->bachlor_status == 'Validé'){
 
-            $requests = DB::table('request_bachlor')
+        elseif ($req->bachlor_status == 'Validé'){
 
-                ->join('faculty', 'request_bachlor.faculty_id', '=', 'faculty.faculty_id')
-                ->join('domain', 'domain.domain_id', '=', 'request_bachlor.bachlor_domain')
-                ->join('division', 'division.division_id', '=', 'request_bachlor.bachlor_division')
-                ->join('speciality', 'speciality.speciality_id', '=', 'request_bachlor.bachlor_speciality')
+            return back()->with('status_updated', 'status est valider!');
 
-                ->select('request_bachlor.*','faculty.*','domain.*','division.*','speciality.*')
-                ->where('request_bachlor_id',$id)
-                ->get();
 
-            $pdf = PDF::loadView('admin.request-view.delivred',compact('requests'))->setPaper('a4', 'landscape');
+//            $requests = DB::table('request_bachlor')
+//
+//                ->join('faculty', 'request_bachlor.faculty_id', '=', 'faculty.faculty_id')
+//                ->join('domain', 'domain.domain_id', '=', 'request_bachlor.bachlor_domain')
+//                ->join('division', 'division.division_id', '=', 'request_bachlor.bachlor_division')
+//                ->join('speciality', 'speciality.speciality_id', '=', 'request_bachlor.bachlor_speciality')
+//
+//                ->select('request_bachlor.*','faculty.*','domain.*','division.*','speciality.*')
+//                ->where('request_bachlor_id',$id)
+//                ->get();
+//
+//            $pdf = Pdf::loadView('delivred',compact('requests'),[],'UTF-8')
+//            ->setPaper('a4','landscape');
+//
+//            return $pdf->download('request-veterinary.pdf');
+//
+//            $pdf = PDF::loadView('delivred',compact('requests'));
+//            return $pdf->download('Licence.pdf');
 
-            return $pdf->download('request-bachlor.pdf');
 
+//            $request = $requests->first();
+//            $pdf = new TCPDF('landscape', PDF_UNIT, 'A4', true, 'UTF-8', true);
+//
+
+
+//            $html = '
+//            <h1>hello<h1>
+//            ';
+//
+//// output the HTML content
+////            $pdf->writeHTML($html, true, 0, true, 0);
+//          //  $view = \View::make('delivred',compact('requests'));
+//        //    $html = $view->render();
+//            $pdf->SetFont('aealarabiya','', 18);
+//            $pdf->SetTitle('Hello World');
+//            $pdf->Text(0,0,$request->bachlor_student_last_name_ar);
+//            $pdf->AddPage();
+//           $pdf->WriteHTML($html, '', 0, 'L', true, 0);
+//            $pdf->Output('Licence.pdf');
+//
+
+
+//
+//            $domPdfPath = base_path( 'vendor/dompdf/dompdf');
+//            Settings::setPdfRendererPath($domPdfPath);
+//            Settings::setPdfRendererName('DomPDF');
+//
+//            $request = $requests->first();
+//
+//
+//
+//            $file = "licence.docx";
+//            $tmpFile = "licence-output.pdf";
+//            $outfile = "licence-output.docx";
+//
+//            $template = new TemplateProcessor($file);
+//            $template->setValue('LAST_NAME',$request->bachlor_student_last_name_ar);
+//            $template->setValue('FIRST_NAME',$request->bachlor_student_first_name_ar);
+//
+//            $template->setValue('BIRTHDAY',$request->bachlor_student_birthday);
+//            $template->setValue('DOMAIN',$request->domain_code);
+//            $template->setValue('FILLIERE',$request->division_code);
+//            $template->setValue('SPECIALITY',$request->speciality_code);
+//
+//            $template->saveAs($outfile);
+//
+//            $phpWord = IOFactory::load($outfile);
+//            $phpWord->save($tmpFile,'PDF');
+//
+//            return  response()->download($outfile);
+
+        }
+        else{
+            return back()->with('status_updated_not', 'status non valider!');
         }
 
 

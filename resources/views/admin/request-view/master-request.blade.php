@@ -27,16 +27,16 @@
                     <table class="data-table w-100" id="dataTable">
                         <thead>
                         <tr>
-                            <th scope="col">request ID</th>
-                            <th scope="col">First name</th>
-                            <th scope="col">Last name</th>
-                            <th scope="col">Birthday</th>
-                            <th scope="col">Faculty</th>
-                            <th scope="col">speciality</th>
-                            <th scope="col">Date of Diploma</th>
-                            <th scope="col">Diploma number</th>
-                            <th scope="col">Note</th>
-                            <th scope="col">Date of Request</th>
+                            <th scope="col">Demande ID</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Date de naissance</th>
+                            <th scope="col">Faculté</th>
+                            <th scope="col">specialité</th>
+                            <th scope="col">Date de diplome</th>
+                            <th scope="col">Numéro de diplome</th>
+                            <th scope="col">Obrevation</th>
+                            <th scope="col">Date de la demande</th>
                             <th scope="col">Status</th>
 
                         </tr>
