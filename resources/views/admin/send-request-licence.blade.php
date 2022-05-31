@@ -64,6 +64,20 @@
                                     @enderror
                                 </div>
 
+                                Willaya:
+                                <div class="form-group">
+                                    <select class="form-select mb-3" id="Willaya" name="Willaya" aria-label="Willaya">
+                                        <option value="0" selected>Willaya</option>
+                                        @foreach($willaya as $key => $willaya)
+                                            <option value="{{$willaya->id}}" >{{$willaya->willaya_code}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error("willaya")
+                                    <small class=" form-text text-danger">{{$message}}</small>
+                                    @enderror
+                                </div>
+
+
                                 <div class="form-group">
                                     <input class="form-control mb-3" type="text" id="diplomanumber" name="diplomanumber" placeholder="Numero de diplome">
                                     @error("diplomanumber")

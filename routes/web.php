@@ -68,7 +68,9 @@ Route::get('/Requests-delete-veterinary/{id}', [RequestLevelController::class, '
 
 Route::get('/Request-veterinary', [RequestLevelController::class, 'getAllVeterinaryRequests'])->name('get.request.veterinary');
 
+Route::get('/Request-veterinary-print', [\App\Http\Controllers\PrintController::class, 'getAllRequestsPrintVeterinary'])->name('print.request.veterinary');
 
+Route::get('/Status-update-veterinary-valider/{id}', [\App\Http\Controllers\StatusValiderController::class, 'changeStatusValidate3'])->name('valider.status.bachlor');
 
 
 //-----------------------------Licence------------------------------------------------------------
@@ -103,6 +105,8 @@ Route::get('/Status-update-bachlor-valider/{id}', [\App\Http\Controllers\StatusV
 
 Route::get('/Status-view-bachlor/{id}', [\App\Http\Controllers\ViewStatusController::class, 'ViewStatus'])->name('view.status.bachlor');
 
+Route::get('/Request-bachelor-print', [\App\Http\Controllers\PrintController::class, 'getAllRequestsPrintBachlor'])->name('print.request.bachelor');
+
 
 //-----------------------------Master------------------------------------------------------------
 
@@ -131,7 +135,9 @@ Route::get('/Request-master-status', [RequestStatusController::class, 'getAllReq
 
 Route::get('/Status-update-master/{id}', [RequestStatusController::class, 'changeStatusMaster'])->name('update.status.master');
 
+Route::get('/Status-update-master-valider/{id}', [\App\Http\Controllers\StatusValiderController::class, 'changeStatusValidate2'])->name('valider.status.master');
 
+Route::get('/Request-master-print', [\App\Http\Controllers\PrintController::class, 'getAllRequestsPrintMaster'])->name('print.request.master');
 
 
 
@@ -174,7 +180,7 @@ Route::post('/Add-domain-sub', [DepartementController::class, 'addDomain'])->nam
 
 Route::get('/Add-domain', [DepartementController::class, 'getFacultyOfDomain'])->name('get.faculty.domain');
 
-Route::get('/getDomainss', [DepartementController::class, 'getAllDomains'])->name('domain.index');
+Route::get('/getDomains', [DepartementController::class, 'getAllDomains'])->name('domain.index');
 
 //------------DEVISION---------------------------------------------------------------------------------------------
 
@@ -207,6 +213,7 @@ Route::get('/getPDF', [\App\Http\Controllers\PrintController::class, 'getPDF'])-
 
 Route::get('/printPDF/{id}', [\App\Http\Controllers\PrintController::class, 'printPDF'])->name('print.pdf');
 
+Route::get('/printPDFmaster/{id}', [\App\Http\Controllers\PrintController::class, 'printPDFmaster'])->name('master.print.pdf');
 
 
 

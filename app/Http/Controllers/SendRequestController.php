@@ -123,6 +123,7 @@ class SendRequestController extends Controller
             'devision' => 'required',
             'speciality' => 'required',
 
+
         ]);
         if($validated -> fails()){
            return redirect()->back()->withErrors($validated)->withInput($request->all());
@@ -142,6 +143,7 @@ class SendRequestController extends Controller
             'bachlor_domain' => $request->domain,
             'bachlor_division' => $request->devision,
             'bachlor_speciality' => $request->speciality,
+            'willaya' => $request->Willaya,
             'bachlor_status_date' => Carbon::now()->toDateTimeString(),
 
 
@@ -192,8 +194,9 @@ class SendRequestController extends Controller
 
     public function getlicenceFaculty(){
         $faculties = DB::table('faculty')->get();
+        $willaya = DB::table('willaya')->get();
 
-        return View('admin.send-request-licence')->with(compact('faculties'));
+        return View('admin.send-request-licence')->with(compact('faculties','willaya'));
 
     }
 
@@ -280,6 +283,8 @@ class SendRequestController extends Controller
             'master_division' => $request->devision,
             'master_speciality' => $request->speciality,
             'master_status_date' => Carbon::now()->toDateTimeString(),
+            'willaya' => $request->Willaya,
+
 
 
         ]);
@@ -289,8 +294,9 @@ class SendRequestController extends Controller
 
     public function getMasterFaculty(){
         $faculties = DB::table('faculty')->get();
+        $willaya = DB::table('willaya')->get();
 
-        return View('admin.send-request-master')->with(compact('faculties'));
+        return View('admin.send-request-master')->with(compact('faculties','willaya'));
 
     }
 

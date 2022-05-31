@@ -31,7 +31,6 @@
                             <th scope="col">Nom</th>
                             <th scope="col">Prénom</th>
                             <th scope="col">Date de naissance</th>
-                            <th scope="col">Faculté</th>
                             <th scope="col">specialité</th>
                             <th scope="col">Date de diplome</th>
                             <th scope="col">Numéro de diplome</th>
@@ -63,11 +62,9 @@
                                     {{$request->bachlor_student_birthday}}
                                 </td>
 
-                                <td id="facultyss">
-                                    {{$request->faculty_id}}
-                                </td>
+
                                 <td id="specialityss">
-                                    {{$request->bachlor_speciality}}
+                                    {{$request->speciality_code_fr}}
                                 </td>
                                 <td id="dateOfDiplomass">
                                     {{$request->bachlor_diploma_date}}

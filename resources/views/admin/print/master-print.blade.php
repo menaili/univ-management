@@ -1,8 +1,8 @@
 @extends('master.master')
 
-@section('title', 'requests-status')
+@section('title', 'demandes-print')
 
-@section('title-page', 'Requests Status')
+@section('title-page', 'Demandes master')
 
 
 @section('content')
@@ -32,6 +32,7 @@
                         </div>
                     @endif
 
+
                     <table class="data-table w-100" id="dataTable">
                         <thead>
                         <tr>
@@ -41,10 +42,10 @@
                             <th scope="col">Prénom</th>
                             <th scope="col">Date de naissance</th>
                             <th scope="col">Specialité</th>
-                            <th scope="col">Date de la demande</th>
                             <th scope="col">Status</th>
 
-                            <th scope="col">Step</th>
+                            <th scope="col">Impression</th>
+
 
 
                         </tr>
@@ -56,7 +57,7 @@
                             <tr>
 
                                 <td>
-                                    <a href="#" id="btn-view" >view</a>
+                                    <a href="/univ-certaficate-management/public/Status-view-master/{{$request->request_master_id}}" id="btn-view" >view</a>
                                 </td>
 
                                 <td>
@@ -77,18 +78,13 @@
 
 
                                 <td>
-                                    {{$request->master_status_date}}
-                                </td>
-
-                                <td>
-                                    {{$request->master_status}}
+                                    {{$request->status}}
                                 </td>
 
                                 <td id="btn-next">
 
 
-                                    <div class="direction-rtl"><a class="btn m-1 btn-outline-primary" id="btn-step" href="/univ-certaficate-management/public/Status-update-master/{{$request->request_master_id}}">Suivant</a></div>
-                                    <div class="direction-rtl"><a class="btn m-1 btn-outline-primary" id="btn-step" href="/univ-certaficate-management/public/Status-update-master-valider/{{$request->request_master_id}}">valider</a></div>
+                                    <div class="direction-rtl"><a class="btn m-1 btn-outline-primary" id="btn-step" href="/univ-certaficate-management/public/printPDFmaster/{{$request->request_master_id}}">imprimer</a></div>
 
                                 </td>
                             </tr>

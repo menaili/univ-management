@@ -9,15 +9,17 @@ use Illuminate\Support\Facades\DB;
 class RequestLevelController extends Controller
 {
     public function getAllBachlorRequests(){
-        $requests = DB::table('request_bachlor')->get();
+        $requests = DB::table('request_bachlor')
+        ->join('faculty', 'request_bachlor.faculty_id', '=', 'faculty.faculty_id')
+            ->join('domain', 'domain.domain_id', '=', 'request_bachlor.bachlor_domain')
+            ->join('division', 'division.division_id', '=', 'request_bachlor.bachlor_division')
+            ->join('speciality', 'speciality.speciality_id', '=', 'request_bachlor.bachlor_speciality')
 
-        $faculty = DB::table('faculty')
-            ->join('request_bachlor','faculty.faculty_id','=','request_bachlor.faculty_id')
-            ->select('faculty.faculty_code')
+            ->select('request_bachlor.*','faculty.*','domain.*','division.*','speciality.*')
             ->get();
 
 
-        return view('admin.request-view.licence-request',compact('requests','faculty'));
+        return view('admin.request-view.licence-request',compact('requests'));
     }
 
 
@@ -100,15 +102,15 @@ class RequestLevelController extends Controller
 
 
     public function getAllVeterinaryRequests(){
-        $requests = DB::table('request_veterinary')->get();
+        $requests = DB::table('request_veterinary')
+            ->join('faculty', 'request_veterinary.faculty_id', '=', 'faculty.faculty_id')
 
-        $faculty = DB::table('faculty')
-            ->join('request_veterinary','faculty.faculty_id','=','request_veterinary.faculty_id')
-            ->select('faculty.faculty_code')
+
+            ->select('request_veterinary.*','faculty.*')
             ->get();
 
 
-        return view('admin.request-view.veterinary-request',compact('requests','faculty'));
+        return view('admin.request-view.veterinary-request',compact('requests'));
     }
 
 
@@ -182,15 +184,17 @@ class RequestLevelController extends Controller
 //-------------------MASTER-------------------------------------------
 
     public function getAllMasterRequests(){
-        $requests = DB::table('request_master')->get();
+        $requests = DB::table('request_master')
+            ->join('faculty', 'request_master.faculty_id', '=', 'faculty.faculty_id')
+            ->join('domain', 'domain.domain_id', '=', 'request_master.master_domain')
+            ->join('division', 'division.division_id', '=', 'request_master.master_division')
+            ->join('speciality', 'speciality.speciality_id', '=', 'request_master.master_speciality')
 
-        $faculty = DB::table('faculty')
-            ->join('request_master','faculty.faculty_id','=','request_master.faculty_id')
-            ->select('faculty.faculty_code')
+            ->select('request_master.*','faculty.*','domain.*','division.*','speciality.*')
             ->get();
 
 
-        return view('admin.request-view.master-request',compact('requests','faculty'));
+        return view('admin.request-view.master-request',compact('requests'));
     }
     public function deleteByIdMaster($id){
 

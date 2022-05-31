@@ -64,7 +64,7 @@
                                 </td>
 
                                 <td id="facultyss">
-                                    {{$request->faculty_id}}
+                                    {{$request->faculty_code}}
                                 </td>
                                 <td id="dateOfDiplomass">
                                     {{$request->veterinary_diploma_date}}

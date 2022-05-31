@@ -15,7 +15,7 @@
         <div class="single-hero-slide bg-overlay" style="background-image: url('img/bg-img/32.jpg')">
             <div class="slide-content h-100 d-flex align-items-center text-center">
                 <div class="container">
-                    <h3 class="text-white mb-1" data-animation="fadeInUp" data-delay="100ms" data-wow-duration="1000ms">University de Souk Ahras</h3>
+                    <h3 class="text-white mb-1" data-animation="fadeInUp" data-delay="100ms" data-wow-duration="1000ms">Université de Souk Ahras</h3>
                     <p class="text-white mb-4" data-animation="fadeInUp" data-delay="400ms" data-wow-duration="1000ms">Gestion des facultés et des certificats <br> </p>
                 </div>
             </div>
@@ -24,7 +24,7 @@
         <div class="single-hero-slide bg-overlay" style="background-image: url('img/bg-img/31.jpg')">
             <div class="slide-content h-100 d-flex align-items-center text-center">
                 <div class="container">
-                    <h3 class="text-white mb-1" data-animation="fadeInUp" data-delay="100ms" data-wow-duration="500ms">University de Souk Ahras</h3>
+                    <h3 class="text-white mb-1" data-animation="fadeInUp" data-delay="100ms" data-wow-duration="500ms">Université de Souk Ahras</h3>
                     <p class="text-white mb-4" data-animation="fadeInUp" data-delay="400ms" data-wow-duration="500ms">Gestion des facultés et des certificats</p>
                 </div>
             </div>
@@ -41,8 +41,8 @@
     <div class="container">
         <div class="card bg-primary mb-3 bg-img" style="background-image: url('img/core-img/1.png')">
             <div class="card-body direction-rtl p-5">
-                <h2 class="text-white">Gestion des certificats</h2>
-                <p class="mb-4 text-white">Vous pouvez gérer les certificats avec des demandes d'ajout, de mise à jour et de suppression, ainsi que modifier le statut de la demande et l'imprimer.</p><a class="btn btn-warning" href="http://localhost/univ-certaficate-management/public/Send-request-licence">Suivant</a>
+                <h2 class="text-white">Gestion des diplomes</h2>
+                <p class="mb-4 text-white">Vous pouvez gérer les certificats avec des demandes d'ajout, de mise à jour et de suppression, ainsi que modifier le statut de la demande et l'imprimer.</p><a class="btn btn-warning" href="/univ-certaficate-management/public/diplomes-home">Suivant</a>
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
         <div class="card bg-primary mb-3 bg-img" style="background-image: url('img/core-img/1.png')">
             <div class="card-body direction-rtl p-5">
                 <h2 class="text-white">Gestion des facultés</h2>
-                <p class="mb-4 text-white">Vous pouvez gérer les facultés avec ajouter, mettre à jour et supprimer (facultés, domaine, fillière, spécialité).</p><a class="btn btn-warning" href="http://localhost/univ-certaficate-management/public/Add-faculty">Suivant</a>
+                <p class="mb-4 text-white">Vous pouvez gérer les facultés avec ajouter, mettre à jour et supprimer (facultés, domaine, fillière, spécialité).</p><a class="btn btn-warning" href="/univ-certaficate-management/public/Add-faculty">Suivant</a>
             </div>
         </div>
     </div>

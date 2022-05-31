@@ -20,9 +20,15 @@
                             {{Session::get('status_updated')}}
                         </div>
                     @endif
-                    @if (Session::has('status_not_updated'))
+                    @if (Session::has('status_updated_not'))
                         <div class="alert alert-danger">
-                            {{Session::get('status_not_updated')}}
+                            {{Session::get('status_updated_not')}}
+                        </div>
+                    @endif
+
+                    @if (Session::has('status_valider'))
+                        <div class="alert alert-success">
+                            {{Session::get('status_valider')}}
                         </div>
                     @endif
 
@@ -66,7 +72,7 @@
                                 </td>
 
                                 <td>
-                                    {{$request->faculty_id}}
+                                    {{$request->faculty_code}}
                                 </td>
 
 
@@ -80,8 +86,8 @@
 
                                 <td id="btn-next">
 
-
-                                    <div class="direction-rtl"><a class="btn m-1 btn-outline-primary" id="btn-step" href="/univ-certaficate-management/public/Status-update/{{$request->request_veterinary_id}}">Next step</a></div>
+                                    <div class="direction-rtl"><a class="btn m-1 btn-outline-primary" id="btn-step" href="/univ-certaficate-management/public/Status-update/{{$request->request_veterinary_id}}">suivant</a></div>
+                                    <div class="direction-rtl"><a class="btn m-1 btn-outline-primary" id="btn-step" href="/univ-certaficate-management/public/Status-update-veterinary-valider/{{$request->request_veterinary_id}}">valider</a></div>
 
                                 </td>
                             </tr>

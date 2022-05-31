@@ -22,12 +22,12 @@ class RequestStatusController extends Controller
 
 
     public function getAllRequestsStatusVeterinary(){
-        $requests = DB::table('request_veterinary')->get();
+        $requests = DB::table('request_veterinary')
+            ->join('faculty', 'request_veterinary.faculty_id', '=', 'faculty.faculty_id')
 
-//        $faculty = DB::table('faculty')
-//            ->join('requests','faculty.faculty_id','=','request_veterinary.faculty_id')
-//            ->select('faculty.faculty_code')
-//            ->get();
+
+            ->select('request_veterinary.*','faculty.*')
+            ->get();
 
 
 
@@ -36,6 +36,8 @@ class RequestStatusController extends Controller
 
 
     public function changeStatusVeterinary($id){
+
+        $reqs= DB::table('veterinary_status')->where('veterinary_status.request_veterinary_id',$id)->first();
 
         $req = DB::table('request_veterinary')->where('request_veterinary_id',$id)->first();
 
@@ -56,7 +58,12 @@ class RequestStatusController extends Controller
             return back()->with('status_updated', 'status updated successfully!');
         }
 
-        if ($req->veterinary_status == 'Consulté'){
+        elseif ($req->veterinary_status == 'Consulté' && $reqs->veterinary_status_valider == 'valider'){
+
+
+            DB::table('veterinary_status')->where('veterinary_status.request_veterinary_id',$id)->update([
+                'veterinary_status_valider' => '',
+            ]);
 
             DB::table('request_veterinary')->where('request_veterinary_id',$id)->update([
                 'veterinary_status' => 'Signature doyen',
@@ -72,7 +79,12 @@ class RequestStatusController extends Controller
 
             return back()->with('status_updated', 'status updated successfully!');
         }
-        if ($req->veterinary_status == 'Signature doyen'){
+        elseif ($req->veterinary_status == 'Signature doyen' && $reqs->veterinary_status_valider == 'valider'){
+
+
+            DB::table('veterinary_status')->where('veterinary_status.request_veterinary_id',$id)->update([
+                'veterinary_status_valider' => '',
+            ]);
 
             DB::table('request_veterinary')->where('request_veterinary_id',$id)->update([
                 'veterinary_status' => 'Signature directeur',
@@ -89,7 +101,12 @@ class RequestStatusController extends Controller
             return back()->with('status_updated', 'status updated successfully!');
         }
 
-        if ($req->veterinary_status == 'Signature directeur'){
+        elseif ($req->veterinary_status == 'Signature directeur' && $reqs->veterinary_status_valider == 'valider'){
+
+
+            DB::table('veterinary_status')->where('veterinary_status.request_veterinary_id',$id)->update([
+                'veterinary_status_valider' => '',
+            ]);
 
             DB::table('request_veterinary')->where('request_veterinary_id',$id)->update([
                 'veterinary_status' => 'Enregistrement',
@@ -106,8 +123,12 @@ class RequestStatusController extends Controller
             return back()->with('status_updated', 'status updated successfully!');
         }
 
-        if ($req->veterinary_status == 'Enregistrement'){
+        elseif ($req->veterinary_status == 'Enregistrement' && $reqs->veterinary_status_valider == 'valider'){
 
+
+            DB::table('veterinary_status')->where('veterinary_status.request_veterinary_id',$id)->update([
+                'veterinary_status_valider' => '',
+            ]);
             DB::table('request_veterinary')->where('request_veterinary_id',$id)->update([
                 'veterinary_status' => 'Validé',
             ]);
@@ -122,7 +143,7 @@ class RequestStatusController extends Controller
 
             return back()->with('status_updated', 'status updated successfully!');
         }
-        if ($req->veterinary_status == 'Validé'){
+        elseif ($req->veterinary_status == 'Validé'){
 
             $requests_veterinary = DB::table('request_bachlor')
 
@@ -139,6 +160,11 @@ class RequestStatusController extends Controller
             return $pdf->download('request-veterinary.pdf');
 
         }
+        else{
+            return back()->with('status_updated_not', 'status non valider!');
+        }
+
+
 
 
     }
@@ -275,6 +301,13 @@ class RequestStatusController extends Controller
         }
 
         elseif ($req->bachlor_status == 'Validé'){
+            date_default_timezone_set('Africa/Algiers');
+            DB::table('print_bachlor')->insert([
+                'request_bachlor_id' => $id,
+
+                'status' => 'en attendant',
+
+            ]);
 
             return back()->with('status_updated', 'status est valider!');
 
@@ -367,12 +400,14 @@ class RequestStatusController extends Controller
 
 
     public function getAllRequestsStatusMaster(){
-        $requests = DB::table('request_master')->get();
+        $requests = DB::table('request_master')
+        ->join('faculty', 'request_master.faculty_id', '=', 'faculty.faculty_id')
+            ->join('domain', 'domain.domain_id', '=', 'request_master.master_domain')
+            ->join('division', 'division.division_id', '=', 'request_master.master_division')
+            ->join('speciality', 'speciality.speciality_id', '=', 'request_master.master_speciality')
 
-//        $faculty = DB::table('faculty')
-//            ->join('requests','faculty.faculty_id','=','request_veterinary.faculty_id')
-//            ->select('faculty.faculty_code')
-//            ->get();
+            ->select('request_master.*','faculty.*','domain.*','division.*','speciality.*')
+            ->get();
 
 
 
@@ -383,6 +418,8 @@ class RequestStatusController extends Controller
     public function changeStatusMaster($id){
 
         $req = DB::table('request_master')->where('request_master_id',$id)->first();
+        $reqs = DB::table('master_status')->where('master_status.request_master_id',$id)->first();
+
 
         if ($req->master_status == 'Demandé'){
 
@@ -393,7 +430,7 @@ class RequestStatusController extends Controller
             date_default_timezone_set('Africa/Algiers');
             DB::table('master_status')->insert([
                 'request_master_id' => $id,
-                'matser_status_date' => Carbon::now()->toDateTimeString(),
+                'master_status_date' => Carbon::now()->toDateTimeString(),
                 'master_status_code' => 'Consulté',
 
             ]);
@@ -401,7 +438,12 @@ class RequestStatusController extends Controller
             return back()->with('status_updated', 'status updated successfully!');
         }
 
-        if ($req->master_status == 'Consulté'){
+        elseif ($req->master_status == 'Consulté' && $reqs->master_status_valider == 'valider'){
+
+
+            DB::table('master_status')->where('master_status.request_master_id',$id)->update([
+                'master_status_valider' => '',
+            ]);
 
             DB::table('request_master')->where('request_master_id',$id)->update([
                 'master_status' => 'Signature doyen',
@@ -417,7 +459,12 @@ class RequestStatusController extends Controller
 
             return back()->with('status_updated', 'status updated successfully!');
         }
-        if ($req->master_status == 'Signature doyen'){
+        elseif ($req->master_status == 'Signature doyen'&& $reqs->master_status_valider == 'valider'){
+
+
+            DB::table('master_status')->where('master_status.request_master_id',$id)->update([
+                'master_status_valider' => '',
+            ]);
 
             DB::table('request_master')->where('request_master_id',$id)->update([
                 'master_status' => 'Signature directeur',
@@ -434,8 +481,12 @@ class RequestStatusController extends Controller
             return back()->with('status_updated', 'status updated successfully!');
         }
 
-        if ($req->master_status == 'Signature directeur'){
+        elseif ($req->master_status == 'Signature directeur' && $reqs->master_status_valider == 'valider'){
 
+
+            DB::table('master_status')->where('master_status.request_master_id',$id)->update([
+                'master_status_valider' => '',
+            ]);
             DB::table('request_master')->where('request_master_id',$id)->update([
                 'master_status' => 'Enregistrement',
             ]);
@@ -451,8 +502,12 @@ class RequestStatusController extends Controller
             return back()->with('status_updated', 'status updated successfully!');
         }
 
-        if ($req->master_status == 'Enregistrement'){
+        elseif ($req->master_status == 'Enregistrement' && $reqs->master_status_valider == 'valider'){
 
+
+            DB::table('master_status')->where('master_status.request_master_id',$id)->update([
+                'master_status_valider' => '',
+            ]);
             DB::table('request_master')->where('request_master_id',$id)->update([
                 'master_status' => 'Validé',
             ]);
@@ -467,14 +522,23 @@ class RequestStatusController extends Controller
 
             return back()->with('status_updated', 'status updated successfully!');
         }
-        if ($req->master_status == 'Validé'){
+        elseif ($req->master_status == 'Validé'){
 
-            $requests_master = DB::table('request_master')->where('request_master_id',$id)->get();
-            $pdf = PDF::loadView('admin.request-view.delivred-master',compact('requests_master'));
+            date_default_timezone_set('Africa/Algiers');
+            DB::table('print_master')->insert([
+                'request_master_id' => $id,
 
-            return $pdf->download('request-master.pdf');
+                'status' => 'en attendant',
+
+            ]);
+
+            return back()->with('status_updated', 'status est valider!');
 
         }
+        else{
+            return back()->with('status_updated_not', 'status non valider!');
+        }
+
 
     }
 
